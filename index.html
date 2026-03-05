@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Voces que Inspiran - Más Mujeres en Ciencia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Sora:wght@400;600;800;900&family=Instrument+Serif:wght@400&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ---- HEADER ---- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: transparent;
+            z-index: 1000;
+            padding: 20px 28px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .header.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo {
+            width: 41px;
+            height: 41px;
+        }
+
+        .header-logo svg path {
+            fill: #CDF6FF;
+            transition: fill 0.3s ease;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .header-title,
+        .header-button {
+            font-weight: 500;
+            font-size: 16px;
+            color: #CDF6FF;
+            transition: color 0.3s ease;
+        }
+
+        .header-button {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .header-button:hover {
+            opacity: 0.7;
+        }
+
+        .header-button.active {
+            font-weight: 700;
+            border-bottom: 1px solid currentColor;
+        }
+
+        /* --- Hamburger (mobile only) --- */
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: currentColor;
+            border-radius: 2px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Mobile menu dropdown */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(15, 23, 30, 0.6);
+            /* Translucent dark tint */
+            backdrop-filter: blur(24px);
+            /* Heavy liquid glass effect */
+            -webkit-backdrop-filter: blur(24px);
+            z-index: 2000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 80px 40px;
+            gap: 40px;
+            transform: translateY(-100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .mobile-menu.open {
+            display: flex;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 24px;
+            right: 28px;
+            background: none;
+            border: none;
+            color: #CDF6FF;
+            font-size: 32px;
+            font-weight: 300;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .mobile-menu a {
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: 32px;
+            text-align: right;
+            color: rgba(205, 246, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a.active {
+            color: #ffffff;
+            font-weight: 800;
+        }
+
+        .mobile-menu a:hover {
+            opacity: 0.7;
+        }
+
+        /* Overlay oscuro detrás del menú */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1999;
+        }
+
+        .mobile-overlay.open {
+            display: block;
+        }
+
+        /* Colores dinámicos del header según sección */
+        .header.header-hero .header-logo svg path,
+        .header.header-hero .header-title,
+        .header.header-hero .header-button {
+            color: #CDF6FF;
+            fill: #CDF6FF;
+        }
+
+        .header.header-s01 .header-logo svg path,
+        .header.header-s01 .header-title,
+        .header.header-s01 .header-button {
+            color: #E9FDC0;
+            fill: #E9FDC0;
+        }
+
+        .header.header-b01 .header-logo svg path,
+        .header.header-b01 .header-title,
+        .header.header-b01 .header-button {
+            color: #553196;
+            fill: #553196;
+        }
+
+        .header.header-s02 .header-logo svg path,
+        .header.header-s02 .header-title,
+        .header.header-s02 .header-button {
+            color: #E3EED0;
+            fill: #E3EED0;
+        }
+
+        .header.header-b02 .header-logo svg path,
+        .header.header-b02 .header-title,
+        .header.header-b02 .header-button {
+            color: #262D1D;
+            fill: #262D1D;
+        }
+
+        .header.header-s03 .header-logo svg path,
+        .header.header-s03 .header-title,
+        .header.header-s03 .header-button {
+            color: #EAEAEA;
+            fill: #EAEAEA;
+        }
+
+        .header.header-b03 .header-logo svg path,
+        .header.header-b03 .header-title,
+        .header.header-b03 .header-button {
+            color: #5C6B72;
+            fill: #5C6B72;
+        }
+
+        .header.header-s04 .header-logo svg path,
+        .header.header-s04 .header-title,
+        .header.header-s04 .header-button {
+            color: #FDFCF9;
+            fill: #FDFCF9;
+        }
+
+        .header.header-b04 .header-logo svg path,
+        .header.header-b04 .header-title,
+        .header.header-b04 .header-button {
+            color: #2447B9;
+            fill: #2447B9;
+        }
+
+        .header.header-s05 .header-logo svg path,
+        .header.header-s05 .header-title,
+        .header.header-s05 .header-button {
+            color: #E4DDF0;
+            fill: #E4DDF0;
+        }
+
+        .header.header-b05 .header-logo svg path,
+        .header.header-b05 .header-title,
+        .header.header-b05 .header-button {
+            color: #8E8021;
+            fill: #8E8021;
+        }
+
+        .header.header-s06 .header-logo svg path,
+        .header.header-s06 .header-title,
+        .header.header-s06 .header-button {
+            color: #DFDAC3;
+            fill: #DFDAC3;
+        }
+
+        .header.header-b06 .header-logo svg path,
+        .header.header-b06 .header-title,
+        .header.header-b06 .header-button {
+            color: #11161C;
+            fill: #11161C;
+        }
+
+        .header.header-s07 .header-logo svg path,
+        .header.header-s07 .header-title,
+        .header.header-s07 .header-button {
+            color: #9AA0CF;
+            fill: #9AA0CF;
+        }
+
+        .header.header-b07 .header-logo svg path,
+        .header.header-b07 .header-title,
+        .header.header-b07 .header-button {
+            color: #221F20;
+            fill: #221F20;
+        }
+
+        .header.header-s08 .header-logo svg path,
+        .header.header-s08 .header-title,
+        .header.header-s08 .header-button {
+            color: #E4DDF0;
+            fill: #E4DDF0;
+        }
+
+        .header.header-b08 .header-logo svg path,
+        .header.header-b08 .header-title,
+        .header.header-b08 .header-button {
+            color: #42304A;
+            fill: #42304A;
+        }
+
+        .header.header-s09 .header-logo svg path,
+        .header.header-s09 .header-title,
+        .header.header-s09 .header-button {
+            color: #F0EEE6;
+            fill: #F0EEE6;
+        }
+
+        .header.header-b09 .header-logo svg path,
+        .header.header-b09 .header-title,
+        .header.header-b09 .header-button {
+            color: #4A6493;
+            fill: #4A6493;
+        }
+
+        .header.header-s10 .header-logo svg path,
+        .header.header-s10 .header-title,
+        .header.header-s10 .header-button {
+            color: #E3EED0;
+            fill: #E3EED0;
+        }
+
+        .header.header-b10 .header-logo svg path,
+        .header.header-b10 .header-title,
+        .header.header-b10 .header-button {
+            color: #262D1D;
+            fill: #262D1D;
+        }
+
+        .header.header-footer .header-logo svg path,
+        .header.header-footer .header-title,
+        .header.header-footer .header-button {
+            color: #CDF6FF;
+            fill: #CDF6FF;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            background-color: #42304A;
+            min-height: 100vh;
+            padding: 20px 28px 60px 28px;
+            color: #E4DDF0;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: calc(100vh - 120px);
+        }
+
+        .hero-logo-item img {
+            height: 80px;
+        }
+
+        .hero-title {
+            font-family: 'Sora', sans-serif;
+            font-weight: 900;
+            font-size: 80px;
+            line-height: 1.1;
+            max-width: 65%;
+            letter-spacing: -2px;
+            overflow-wrap: break-word;
+            /* Prevent long words from breaking layout */
+            word-wrap: break-word;
+        }
+
+        /* ---- SECCIONES ---- */
+        section[class*="seccion-"]:not([class*="bajadita"]) {
+            min-height: 100vh;
+            padding: 58px 28px 100px 28px;
+        }
+
+        .section-number {
+            font-family: 'Instrument Serif', serif;
+            font-size: 40px;
+            margin-bottom: 82px;
+        }
+
+        .main-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 48px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 120px;
+        }
+
+        .main-title h1 {
+            font-size: inherit;
+            font-weight: 400;
+        }
+
+        .content-wrapper {
+            width: 66.66%;
+            margin-left: auto;
+            margin-right: 0;
+            display: flex;
+            gap: 49px;
+            flex-wrap: wrap;
+        }
+
+        .text-column {
+            flex: 1;
+            min-width: 250px;
+            max-width: calc(100% - 24.5px);
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 1.5;
+            letter-spacing: -0.3px;
+        }
+
+        .text-column p {
+            margin-bottom: 20px;
+        }
+
+        .text-column p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Colores por sección */
+        .seccion-01 {
+            background-color: #8E8021;
+        }
+
+        .seccion-01 .section-number,
+        .seccion-01 .main-title,
+        .seccion-01 .text-column {
+            color: #E9FDC0;
+        }
+
+        .seccion-02 {
+            background-color: #262D1D;
+        }
+
+        .seccion-02 .section-number,
+        .seccion-02 .main-title,
+        .seccion-02 .text-column {
+            color: #E3EED0;
+        }
+
+        .seccion-03 {
+            background-color: #5C6B72;
+        }
+
+        .seccion-03 .section-number,
+        .seccion-03 .main-title,
+        .seccion-03 .text-column {
+            color: #EAEAEA;
+        }
+
+        .seccion-04 {
+            background-color: #2447B9;
+        }
+
+        .seccion-04 .section-number,
+        .seccion-04 .main-title,
+        .seccion-04 .text-column {
+            color: #FDFCF9;
+        }
+
+        .seccion-05 {
+            background-color: #42304A;
+        }
+
+        .seccion-05 .section-number,
+        .seccion-05 .main-title,
+        .seccion-05 .text-column {
+            color: #E4DDF0;
+        }
+
+        .seccion-06 {
+            background-color: #11161C;
+        }
+
+        .seccion-06 .section-number,
+        .seccion-06 .main-title,
+        .seccion-06 .text-column {
+            color: #DFDAC3;
+        }
+
+        .seccion-07 {
+            background-color: #221F20;
+        }
+
+        .seccion-07 .section-number,
+        .seccion-07 .main-title,
+        .seccion-07 .text-column {
+            color: #9AA0CF;
+        }
+
+        .seccion-08 {
+            background-color: #42304A;
+        }
+
+        .seccion-08 .section-number,
+        .seccion-08 .main-title,
+        .seccion-08 .text-column {
+            color: #E4DDF0;
+        }
+
+        .seccion-09 {
+            background-color: #4A6493;
+        }
+
+        .seccion-09 .section-number,
+        .seccion-09 .main-title,
+        .seccion-09 .text-column {
+            color: #F0EEE6;
+        }
+
+        .seccion-10 {
+            background-color: #262D1D;
+        }
+
+        .seccion-10 .section-number,
+        .seccion-10 .main-title,
+        .seccion-10 .text-column {
+            color: #E3EED0;
+        }
+
+        /* ---- BAJADITAS ---- */
+        section[class*="bajadita"] {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 28px;
+        }
+
+        .bajadita-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .image-box {
+            width: 100%;
+            max-width: 1200px;
+            height: 600px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+        }
+
+        .bajadita-text {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 22px;
+            line-height: 1.2;
+            padding: 0 20px;
+        }
+
+        .bajadita-text h3 {
+            font-size: inherit;
+            font-weight: inherit;
+            margin: 0;
+            font-family: 'Sora', sans-serif;
+        }
+
+        /* Colores de bajaditas */
+        .bajadita-01 {
+            background-color: #E4DDF0;
+        }
+
+        .bajadita-01 .bajadita-text {
+            color: #42304A;
+        }
+
+        .bajadita-01 .image-box {
+            background-image: url('https://i.imgur.com/9Hk2QOh.jpeg');
+        }
+
+        .bajadita-02 {
+            background-color: #E3EED0;
+        }
+
+        .bajadita-02 .bajadita-text {
+            color: #262D1D;
+        }
+
+        .bajadita-02 .image-box {
+            background-image: url('https://i.imgur.com/qL5Lphb.jpeg');
+        }
+
+        .bajadita-03 {
+            background-color: #EAEAEA;
+        }
+
+        .bajadita-03 .bajadita-text {
+            color: #5C6B72;
+        }
+
+        .bajadita-03 .image-box {
+            background-image: url('https://i.imgur.com/agVbpB2.jpeg');
+        }
+
+        .bajadita-04 {
+            background-color: #FDFCF9;
+        }
+
+        .bajadita-04 .bajadita-text {
+            color: #2447B9;
+        }
+
+        .bajadita-04 .image-box {
+            background-image: url('https://i.imgur.com/sMOrMqI.jpeg');
+        }
+
+        .bajadita-05 {
+            background-color: #E9FDC0;
+        }
+
+        .bajadita-05 .bajadita-text {
+            color: #8E8021;
+        }
+
+        .bajadita-05 .image-box {
+            background-image: url('https://i.imgur.com/0av5g5l.jpeg');
+        }
+
+        .bajadita-06 {
+            background-color: #DFDAC3;
+        }
+
+        .bajadita-06 .bajadita-text {
+            color: #11161C;
+        }
+
+        .bajadita-06 .image-box {
+            background-image: url('https://i.imgur.com/HE1d47P.jpeg');
+        }
+
+        .bajadita-07 {
+            background-color: #9AA0CF;
+        }
+
+        .bajadita-07 .bajadita-text {
+            color: #221F20;
+        }
+
+        .bajadita-07 .image-box {
+            background-image: url('https://i.imgur.com/dL43xO2.jpeg');
+        }
+
+        .bajadita-08 {
+            background-color: #E4DDF0;
+        }
+
+        .bajadita-08 .bajadita-text {
+            color: #42304A;
+        }
+
+        .bajadita-08 .image-box {
+            background-image: url('https://i.imgur.com/DCSQOAK.jpeg');
+        }
+
+        .bajadita-09 {
+            background-color: #F0EEE6;
+        }
+
+        .bajadita-09 .bajadita-text {
+            color: #4A6493;
+        }
+
+        .bajadita-09 .image-box {
+            background-image: url('https://i.imgur.com/UmHJrHl.jpeg');
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            background-color: #094654;
+            min-height: 100vh;
+            padding: 60px 28px;
+            color: #CDF6FF;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: calc(100vh - 120px);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .footer-section-title {
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .footer-link {
+            font-weight: 600;
+            font-size: 16px;
+            color: #CDF6FF;
+            background-color: #1E6081;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 100px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .footer-logo-item img {
+            height: 80px;
+            filter: brightness(0) saturate(100%) invert(91%) sepia(16%) saturate(1057%) hue-rotate(157deg) brightness(103%) contrast(101%);
+        }
+
+        .footer-tagline {
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: 32px;
+            text-align: right;
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            .header {
+                padding: 12px 20px;
+                max-height: 60px;
+            }
+
+            .header-logo {
+                width: 24px;
+                height: 24px;
+            }
+
+            .header-right {
+                gap: 12px;
+            }
+
+            /* En mobile: ocultar links del desktop, mostrar hamburguesa */
+            .header-title,
+            .header-button {
+                display: none;
+            }
+
+            .hamburger-btn {
+                display: flex;
+                color: currentColor;
+            }
+
+            section[class*="seccion-"]:not([class*="bajadita"]) {
+                padding: 40px 20px 60px 20px;
+            }
+
+            .section-number {
+                font-size: 20px;
+                margin-bottom: 50px;
+            }
+
+            .main-title {
+                font-size: 28px;
+                margin-bottom: 80px;
+            }
+
+            .content-wrapper {
+                width: 100%;
+                margin-left: 0;
+                gap: 30px;
+            }
+
+            .text-column {
+                font-size: 16px;
+                max-width: 100%;
+            }
+
+            .hero {
+                padding: 20px 20px 60px 20px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+                max-width: 100%;
+                letter-spacing: -1px;
+                /* Tighter letter spacing to save space */
+                line-height: 1.1;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                hyphens: auto;
+                /* Help break words gracefully */
+            }
+
+            .hero-logo-item img {
+                height: 40px;
+            }
+
+            section[class*="bajadita"] {
+                padding: 40px 20px;
+            }
+
+            .image-box {
+                height: 0;
+                padding-bottom: 80%;
+            }
+
+            .bajadita-text {
+                font-size: 18px;
+                width: 100%;
+            }
+
+            .footer {
+                padding: 40px 20px;
+            }
+
+            .footer-tagline {
+                font-size: 22px;
+            }
+
+            .footer-logo-item img {
+                height: 50px;
+            }
+
+            .footer-link {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="main-header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="header-logo">
+                    <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M40.3069 7.91402V3H25.5679H20.6681V7.91402V12.8527V17.7618V22.7005V27.6145H25.5679H40.3069V22.7005H25.5679V17.7618H40.3069V12.8527H25.5679V7.91402H40.3069Z"
+                            fill="white" />
+                        <path
+                            d="M8.39655 3C4.31417 3 1 6.31881 1 10.4179C1 14.5171 4.30924 17.8359 8.39655 17.8359C12.4839 17.8359 15.7931 14.5171 15.7931 10.4179C15.7931 6.31881 12.4839 3 8.39655 3ZM8.39655 12.8972C7.03248 12.8972 5.92447 11.786 5.92447 10.4179C5.92447 9.04992 7.03248 7.93871 8.39655 7.93871C9.76063 7.93871 10.8686 9.04992 10.8686 10.4179C10.8686 11.786 9.76063 12.8972 8.39655 12.8972Z"
+                            fill="white" />
+                        <path d="M15.7931 22.7054H1V27.6491H15.7931V22.7054Z" fill="white" />
+                        <path d="M40.3022 32.5829H1V37.5265H40.3022V32.5829Z" fill="white" />
+                    </svg>
+                </div>
+            </div>
+            <div class="header-right">
+                <!-- Desktop nav -->
+                <div class="header-title">VOCES QUE INSPIRAN</div>
+                <a href="cecap.html" class="header-button">CECAP</a>
+                <a href="index.html" class="header-button active">MÁS MUJERES EN CIENCIA</a>
+                <!-- Hamburger (mobile) -->
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <nav class="mobile-menu" id="mobile-menu">
+        <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Cerrar menú">✕</button>
+        <a href="cecap.html">CECAP</a>
+        <a href="index.html" class="active">MÁS MUJERES EN CIENCIA</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="sec-hero">
+        <div class="hero-content">
+            <div class="hero-top">
+                <div class="hero-logo-item">
+                    <img src="https://i.imgur.com/MWE529r.png" alt="Más Mujer en Ciencia">
+                </div>
+            </div>
+            <div class="hero-bottom">
+                <h1 class="hero-title">Más Mujer en Ciencia:<br>encuentros que inspiran</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 01 -->
+    <section class="seccion-01" id="sec-01">
+        <div class="section-number">
+            <h3>01</h3>
+        </div>
+        <div class="main-title">
+            <h1>Más Mujer<br>en Ciencia</h1>
+        </div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>Más Mujer en Ciencia es un proyecto bajo la órbita de Cultura Científica de la Dirección Nacional de
+                    Educación que busca despertar vocaciones científicas en niñas y adolescentes, a través de encuentros
+                    y talleres con mujeres científicas.</p>
+                <p>A través de este proyecto, en Rocha y Lavalleja, hace más de siete años que se construye una red que
+                    derriba estereotipos y abre caminos.</p>
+            </div>
+            <div class="text-column">
+                <p>Las brechas de género en las vocaciones científicas no son noticia. Se ha avanzado positivamente,
+                    pero aún queda mucho camino por recorrer. En ese contexto, hay espacios por donde entra la luz con
+                    personas que trabajan todos los días para cambiar esta realidad.</p>
+                <p>Uno de esos espacios es Más Mujer en Ciencia, un proyecto coordinado por Cultura Científica del
+                    Ministerio de Educación y Cultura (MEC) que funciona en Rocha y Lavalleja, con el apoyo de ANEP, OEI
+                    e instituciones dedicadas a la ciencia y a la educación.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAJADITA 01 -->
+    <section class="bajadita-01" id="sec-b01">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>"una red que derriba estereotipos y abre caminos."</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 02 -->
+    <section class="seccion-02" id="sec-02">
+        <div class="section-number">
+            <h3>02</h3>
+        </div>
+        <div class="main-title">
+            <h1>Una propuesta<br>que transforma</h1>
+        </div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>La historia de Más Mujer en Ciencia surgió en el año 2017, cuando ambas referentes empezaron a
+                    identificar que, si bien en instancias como los Clubes de Ciencia, la participación de niñas era
+                    buena, la situación cambiaba en los años posteriores, cuando esas mismas estudiantes alcanzaban
+                    secundaria.</p>
+                <p>La información a la que accedieron sobre la participación de mujeres en carreras universitarias
+                    vinculadas con la ciencia intensificó esa alarma. Pero eso, lejos de paralizarlas, las alentó a
+                    crear un proyecto que ayudara a cambiar la realidad.</p>
+            </div>
+            <div class="text-column">
+                <p>La propuesta es voluntaria: las estudiantes que tengan entre 11 y 17 años y quieran participar, deben
+                    anotarse y saber que deberán cumplir con el cronograma anual de encuentros. En ese lapso, las
+                    chiquilinas tienen reuniones quincenales con mujeres científicas de todo el país.</p>
+                <p>Desde el principio, el proyecto alcanzó a estudiantes de diferentes contextos. Carla recuerda que en
+                    el primer año tuvieron un caso emblemático: "Era una chica de Batlle y Ordóñez que salía a las cinco
+                    de la mañana desde su pueblo hacia Montevideo, porque no hay ómnibus directo hasta Minas".</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAJADITA 02 -->
+    <section class="bajadita-02" id="sec-b02">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>"Cuando mi madre me mostró la propuesta y vi que podía conocer científicas uruguayas, sentí que se
+                    me abría otro mundo"</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 03 -->
+    <section class="seccion-03" id="sec-03">
+        <div class="section-number">
+            <h3>03</h3>
+        </div>
+        <div class="main-title">
+            <h1>La ciencia como<br>una alternativa real</h1>
+        </div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>Paz Hernández tiene 16 años, vive en Minas, Lavalleja, y este es el tercer año que elige participar
+                    del proyecto Más Mujer en Ciencia. "Cuando mi madre me mostró la propuesta y vi que podía conocer
+                    científicas uruguayas, sentí que se me abría otro mundo", cuenta.</p>
+                <p>"Siempre me gustó estar al aire libre, mirar insectos, perseguir caminitos de hormigas y leer sobre
+                    fauna y flora marina", agrega.</p>
+            </div>
+            <div class="text-column">
+                <p>De los encuentros del proyecto, recuerda especialmente una salida nocturna al final del año. "Aprendí
+                    que si un árbol brilla de lejos, probablemente tenga insectos. Fue muy lindo vivirlo. Uno de los que
+                    más me llamó la atención fue saber que en el río Santa Lucía hay camarones. Eso me voló la cabeza",
+                    dice.</p>
+                <p>El testimonio de Paz resume el corazón del proyecto: ciencia viva, cercana y compartida. "Aunque no
+                    te vayas a dedicar a la ciencia, esta experiencia te cambia la forma de ver el mundo", asegura.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAJADITA 03 -->
+    <section class="bajadita-03" id="sec-b03">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>"No tenemos mujeres científicas en nuestras familias, este tipo de espacios se vuelven
+                    imprescindibles"</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 04 -->
+    <section class="seccion-04" id="sec-04">
+        <div class="section-number">
+            <h3>04</h3>
+        </div>
+        <div class="main-title">
+            <h1>Vocación y una red<br>que sostiene</h1>
+        </div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>Julieta García tiene 22 años, es de Rocha y participó en Más Mujer en Ciencia durante 2017 y 2018.
+                    Hoy, estudia Ciencia Política. Aunque su camino fue por el lado de las ciencias sociales, la
+                    experiencia en el proyecto fue clave.</p>
+                <p>Más Mujer en Ciencia fue, para ella, un espacio de desarrollo, que potenció sus habilidades de
+                    liderazgo y comunicación y mejoró la confianza en sí misma. "Me cambió la forma de ver la ciencia,
+                    pero sobre todo, la forma de ver lo que es ser mujer, estudiante y profesional en nuestro país."</p>
+            </div>
+            <div class="text-column">
+                <p>Eugenia González, también rochense, hoy estudia Bioquímica Clínica en la Facultad de Química de la
+                    Universidad de la República. "Estar entre mujeres con intereses comunes, donde no saber algo no
+                    constituye una traba, sino una oportunidad, fue transformador."</p>
+                <p>Para quienes no tenemos mujeres científicas en nuestras familias, este tipo de espacios se vuelven
+                    imprescindibles. "El proyecto me ayudó a reconocer histórica y actualmente, el valor de las mujeres
+                    en la comunidad científica y también me hizo ver los caminos que faltan recorrer."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAJADITA 04 -->
+    <section class="bajadita-04" id="sec-b04">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>"Compartir la pasión por lo que hacemos me hace feliz y hacerlo con chicas jóvenes que tienen todo
+                    por delante, es especial"</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 05 -->
+    <section class="seccion-05" id="sec-05">
+        <div class="section-number">
+            <h3>05</h3>
+        </div>
+        <div class="main-title">
+            <h1>Derribar estereotipos,<br>construir futuro</h1>
+        </div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>Anita Aisenberg estudió la Licenciatura en Ciencias Biológicas en la Facultad de Ciencias de la
+                    Universidad de la República, donde también cursó su Maestría y su Doctorado. Actualmente, es
+                    profesora titular de Investigación Grado 5 en el IIBCE. Para ella, "la ciencia es todo".</p>
+                <p>"Terminé trabajando con arácnidos, tratando de entender y comprender por qué los animales hacen lo
+                    que hacen y cómo eso puede cambiar a lo largo del tiempo y en respuesta a lo que tienen alrededor",
+                    dice Aisenberg.</p>
+            </div>
+            <div class="text-column">
+                <p>Anita forma parte de Más Mujer en Ciencia desde el inicio. "Compartir la pasión por lo que hacemos me
+                    hace feliz y hacerlo con chicas jóvenes que tienen todo por delante, es especial."</p>
+                <p>"Más Mujer en Ciencia es esperanza. Es el encuentro con los intereses que tienen las chicas de
+                    distintas partes del país." Para Aisenberg, es importante que las estudiantes conecten con la
+                    incertidumbre y que su intención es "aportar un granito de arena para que esa búsqueda sea más
+                    amable".</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAJADITA 05 -->
+    <section class="bajadita-05" id="sec-b05">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>"Quiero que sepan que la ciencia es una posibilidad más para las mujeres, que se puede"</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 06 -->
+    <section class="seccion-06" id="sec-06">
+        <div class="section-number">
+            <h3>06</h3>
+        </div>
+        <div class="main-title">
+            <h1>La perseverancia<br>como secreto</h1>
+        </div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>Vanesa Amarelle tiene un sinfín de títulos y diplomas. Es licenciada en Bioquímica, tiene una
+                    maestría y un doctorado y es investigadora. Sin embargo, en 1999, cuando ingresó a la Facultad de
+                    Ciencias de la Udelar, lo hizo con un examen del liceo pendiente.</p>
+                <p>"En ese momento, me afectó mucho eso porque yo ya tenía mi grupo de estudio y de amigos y tuve que
+                    irme para volver al año siguiente. No fue fácil", recuerda Amarelle. Para ella, esa es una de las
+                    etapas que más le importa contar.</p>
+            </div>
+            <div class="text-column">
+                <p>"Me resulta interesante contarles a las chicas mi trayectoria profesional, pero también personal, mi
+                    historia. Me gusta decirles todo lo que me dio la ciencia: personas, experiencias, viajes, hasta
+                    conocer la Antártida, en mi caso."</p>
+                <p>Para Vanesa, la brecha de género en la ciencia es un aspecto clave a abordar: "Quiero que sepan que
+                    la ciencia es una posibilidad más para las mujeres, que se puede y que somos muchas mujeres haciendo
+                    ciencia aunque exista una subrepresentación en cargos de mayor jerarquía."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAJADITA 06 -->
+    <section class="bajadita-06" id="sec-b06">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>"Mi experiencia en Más Mujer en Ciencia es muy emocionante. Es un espacio de diálogo, de
+                    conversación e intercambio"</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 07 -->
+    <section class="seccion-07" id="sec-07">
+        <div class="section-number">
+            <h3>07</h3>
+        </div>
+        <div class="main-title">
+            <h1>Las científicas, mujeres<br>de carne y hueso</h1>
+        </div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>Camila Gianotti es licenciada en Antropología, especializada en Arqueología. Trabaja como arqueóloga
+                    en el Centro Universitario Regional del Este (CURE) desde que se recibió, en 1998. Su historia con
+                    la ciencia se remonta a cuando tenía 12 años.</p>
+                <p>"Visité muchos lugares que me impresionaron, pero recuerdo especialmente el Museo Nacional de
+                    Antropología de México. Me impactó su potencia y me emocionó a tal punto que les dije a mis padres
+                    que me quería dedicar a la arqueología."</p>
+            </div>
+            <div class="text-column">
+                <p>"Mi experiencia en Más Mujer en Ciencia es muy emocionante. Es un espacio de diálogo, de conversación
+                    e intercambio con mujeres adolescentes que llegan para acercarse de alguna forma a la ciencia."</p>
+                <p>"Más Mujer en Ciencia contribuye enormemente a mostrar que todas podemos hacer ciencia, ser
+                    científicas, estudiar, investigar, formarnos, enseñar, trabajar de lo que nos gusta y
+                    desarrollarnos. Somos madres, amigas, hermanas. Somos de carne y hueso, como cualquiera."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAJADITA 07 -->
+    <section class="bajadita-07" id="sec-b07">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>"Como maestra, encontrar una herramienta que transforma una realidad es hacer realidad una utopía"
+                </h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 08 -->
+    <section class="seccion-08" id="sec-08">
+        <div class="section-number">
+            <h3>08</h3>
+        </div>
+        <div class="main-title">
+            <h1>Una herramienta<br>que transforma</h1>
+        </div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>Una de las particularidades de este proyecto tiene que ver con su origen, que responde al interés
+                    genuino de dos maestras que vieron una oportunidad en algo que parecía un desafío inabarcable.</p>
+                <p>"Yo soy maestra, pero me gusta definirme como educadora, con el sentido que Paulo Freire le daba",
+                    dice Carla Pereira. "Desde ese lugar, encontrar una herramienta que transforma una realidad y que
+                    permite 'torcer un poco el destino esperado' es hacer realidad una utopía."</p>
+            </div>
+            <div class="text-column">
+                <p>"Para mí, Más Mujer en Ciencia es motivación y emoción y eso se cristaliza en los avances de las
+                    chiquilinas. Es un espacio donde se construye una voz colectiva y, a la vez, voces individuales."
+                </p>
+                <p>Para Catalina Olid, también coordinadora, este proyecto es "como un bebé" porque lo pensaron desde
+                    cero y lo siguen haciendo de esa forma. "Estamos presentes en todo lo que pasa. En las actividades y
+                    sosteniendo a las chiquilinas, en contacto con las familias y con las instituciones."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAJADITA 08 -->
+    <section class="bajadita-08" id="sec-b08">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>"Para mí fue importante que ella viera que con trabajo, estudio, determinación y compromiso, las
+                    mujeres podemos lograr todo lo que nos proponemos"</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 09 -->
+    <section class="seccion-09" id="sec-09">
+        <div class="section-number">
+            <h3>09</h3>
+        </div>
+        <div class="main-title">
+            <h1>Familias que acompañan,<br>un eslabón clave</h1>
+        </div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>Las estudiantes que eligen formar parte de este proyecto, en su gran mayoría, lo hacen con el apoyo
+                    de sus familias. De hecho, en muchos casos, es a través de familiares que toman conocimiento de Más
+                    Mujer en Ciencia.</p>
+                <p>Laura Acosta es maestra y madre de Julieta, una de las estudiantes que participó en Más Mujer en
+                    Ciencia. "Julieta es curiosa por la naturaleza y también tiene un interés especial en los temas de
+                    género."</p>
+            </div>
+            <div class="text-column">
+                <p>"Después de cada encuentro, Juli tenía un sinfín de anécdotas, datos, pruebas, de todo", recuerda
+                    Laura. "Para mí fue importante que ella viera que con trabajo, estudio, determinación y compromiso,
+                    las mujeres podemos lograr todo lo que nos proponemos."</p>
+                <p>"Visitamos laboratorios, participamos de experiencias de intercambio y conocimos universidades",
+                    dice, y aclara: "Hablo en primera persona porque la acompañé y pude vivir todo eso con ella."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAJADITA 09 -->
+    <section class="bajadita-09" id="sec-b09">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>"Tenemos que construir lo que queremos, sin perder miradas interseccionales"</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 10 -->
+    <section class="seccion-10" id="sec-10">
+        <div class="section-number">
+            <h3>10</h3>
+        </div>
+        <div class="main-title">
+            <h1>La mirada puesta<br>en el futuro</h1>
+        </div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>Un proyecto que empezó como sueño en 2017 y que hoy lleva ocho años funcionando, naturalmente, ha
+                    transitado diferentes momentos. Queda claro que lo que sostiene a Más Mujer en Ciencia son las
+                    personas que están detrás, haciendo que las cosas pasen.</p>
+                <p>Para Carla, la mirada está puesta en pasar a ser programa, sin dejar de ser una construcción
+                    colectiva entre adolescentes, científicas, líderes de políticas públicas e instituciones. "Tenemos
+                    que construir lo que queremos, sin perder miradas interseccionales."</p>
+            </div>
+            <div class="text-column">
+                <p>Catalina tiene una mirada coincidente con la de Carla. Está convencida de que Más Mujer en Ciencia
+                    tiene potencial de crecimiento, pero asegura que la única forma de que eso suceda es trabajando en
+                    red.</p>
+                <p>Más Mujer en Ciencia no es solo un programa: es un punto de partida, una chispa que enciende dudas,
+                    preguntas, vocaciones e intereses. Es una red que acompaña, más allá del aula. En cada encuentro, en
+                    cada historia compartida, se tejen la confianza, la inspiración y el deseo de construir un mundo más
+                    justo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="sec-footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <div class="footer-section-title">REDES</div>
+                        <a href="https://www.instagram.com/educacion_mec/" target="_blank"
+                            class="footer-link">Instagram</a>
+                        <a href="https://www.youtube.com/channel/UC0a6nPrmt3iZcCGTZg4c-Jw" target="_blank"
+                            class="footer-link">Youtube</a>
+                    </div>
+                    <div class="footer-section">
+                        <div class="footer-section-title">MÁS INFO</div>
+                        <a href="https://www.gub.uy/ministerio-educacion-cultura" target="_blank"
+                            class="footer-link">Portal MEC</a>
+                        <a href="cecap.html" class="footer-link">Leer artículo CECAP</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-logo-item">
+                    <img src="https://i.imgur.com/MWE529r.png" alt="Más Mujer en Ciencia">
+                </div>
+                <div class="footer-tagline-container">
+                    <div class="footer-tagline">Voces que inspiran</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const header = document.querySelector('.header');
+
+        // Mapa: clase de sección → clase del header
+        const sectionHeaderMap = [
+            { id: 'sec-hero', cls: 'header-hero' },
+            { id: 'sec-01', cls: 'header-s01' },
+            { id: 'sec-b01', cls: 'header-b01' },
+            { id: 'sec-02', cls: 'header-s02' },
+            { id: 'sec-b02', cls: 'header-b02' },
+            { id: 'sec-03', cls: 'header-s03' },
+            { id: 'sec-b03', cls: 'header-b03' },
+            { id: 'sec-04', cls: 'header-s04' },
+            { id: 'sec-b04', cls: 'header-b04' },
+            { id: 'sec-05', cls: 'header-s05' },
+            { id: 'sec-b05', cls: 'header-b05' },
+            { id: 'sec-06', cls: 'header-s06' },
+            { id: 'sec-b06', cls: 'header-b06' },
+            { id: 'sec-07', cls: 'header-s07' },
+            { id: 'sec-b07', cls: 'header-b07' },
+            { id: 'sec-08', cls: 'header-s08' },
+            { id: 'sec-b08', cls: 'header-b08' },
+            { id: 'sec-09', cls: 'header-s09' },
+            { id: 'sec-b09', cls: 'header-b09' },
+            { id: 'sec-10', cls: 'header-s10' },
+            { id: 'sec-footer', cls: 'header-footer' },
+        ];
+
+        const allHeaderClasses = sectionHeaderMap.map(s => s.cls);
+
+        function updateHeader() {
+            const hero = document.getElementById('sec-hero');
+            const footer = document.getElementById('sec-footer');
+            const scrollY = window.scrollY;
+            const heroBottom = hero.offsetTop + hero.offsetHeight;
+            const footerTop = footer.offsetTop;
+
+            // Mostrar/ocultar header
+            if (scrollY > heroBottom - 100 && scrollY < footerTop - 100) {
+                header.classList.add('visible');
+            } else {
+                header.classList.remove('visible');
+            }
+
+            // Actualizar color según sección actual
+            const scrollCenter = scrollY + 100;
+            for (const { id, cls } of sectionHeaderMap) {
+                const el = document.getElementById(id);
+                if (!el) continue;
+                const top = el.offsetTop;
+                const bottom = top + el.offsetHeight;
+                if (scrollCenter >= top && scrollCenter < bottom) {
+                    header.classList.remove(...allHeaderClasses);
+                    header.classList.add(cls);
+                    break;
+                }
+            }
+        }
+
+        window.addEventListener('scroll', updateHeader);
+        updateHeader();
+
+        // --- Hamburger menu ---
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const mobileClose = document.getElementById('mobile-menu-close');
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            mobileOverlay.classList.add('open');
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            mobileOverlay.classList.remove('open');
+        }
+
+        hamburgerBtn.addEventListener('click', openMenu);
+        mobileClose.addEventListener('click', closeMenu);
+        mobileOverlay.addEventListener('click', closeMenu);
+    </script>
+
+</body>
+
+</html>
