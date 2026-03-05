@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Voces que Inspiran - Más Mujeres en Ciencia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -364,6 +364,9 @@
             line-height: 1.1;
             max-width: 65%;
             letter-spacing: -2px;
+            overflow-wrap: break-word;
+            /* Prevent long words from breaking layout */
+            word-wrap: break-word;
         }
 
         /* ---- SECCIONES ---- */
@@ -798,6 +801,13 @@
             .hero-title {
                 font-size: 36px;
                 max-width: 100%;
+                letter-spacing: -1px;
+                /* Tighter letter spacing to save space */
+                line-height: 1.1;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                hyphens: auto;
+                /* Help break words gracefully */
             }
 
             .hero-logo-item img {
