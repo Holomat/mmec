@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Más Mujeres en Ciencia - Voces que Inspiran</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* --- Variables y Estilos Base --- */
+        :root {
+            /* Paleta de colores base (se puede ajustar) */
+            --color-base-texto: #333333;
+            --color-blanco: #FFFFFF;
+            --color-negro-suave: #212121;
+
+            /* Colores de la marca (ejemplos) */
+            --color-marca-violeta: #6a1b9a;
+            /* Violeta principal para este tema */
+            --color-marca-magenta: #c2185b;
+            --color-marca-azul: #0277bd;
+            --color-marca-verde: #2e7d32;
+        }
+
+        /* Temas de color para cada artículo */
+        .tema-mujeres-ciencia {
+            --color-primario: var(--color-marca-violeta);
+            --color-secundario: var(--color-marca-magenta);
+            --color-acento: var(--color-marca-azul);
+            --color-texto-capitulo: var(--color-base-texto);
+        }
+
+        .tema-cecap {
+            --color-primario: var(--color-marca-azul);
+            --color-secundario: var(--color-marca-verde);
+            --color-acento: var(--color-marca-magenta);
+            --color-texto-capitulo: var(--color-base-texto);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--color-texto-capitulo);
+            background-color: var(--color-blanco);
+            line-height: 1.8;
+            transition: background-color 0.5s ease;
+        }
+
+        /* --- Navegación Principal --- */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--color-negro-suave);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 5px 10px;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s ease, color 0.3s ease;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: var(--color-primario);
+            border-bottom: 2px solid var(--color-primario);
+        }
+
+        /* Espacio para la navegación fija */
+        main {
+            padding-top: 80px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* --- Estructura de Portadas --- */
+        .portada-principal,
+        .portadilla {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--color-blanco);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* Efecto parallax */
+            position: relative;
+        }
+
+        .portada-principal::before,
+        .portadilla::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Capa oscura para legibilidad */
+        }
+
+        .frase-portada,
+        .frase-portadilla {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 20px;
+            font-size: 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        /* --- Estructura de Capítulos --- */
+        .capitulo {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .titulo-capitulo {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--color-primario);
+            padding-bottom: 20px;
+        }
+
+        .numero-capitulo {
+            font-size: 6rem;
+            font-weight: 700;
+            color: var(--color-primario);
+            margin-right: 20px;
+            line-height: 1;
+        }
+
+        .titulo-capitulo h1 {
+            font-size: 3rem;
+            color: var(--color-negro-suave);
+        }
+
+        .contenido-capitulo {
+            font-size: 1.1rem;
+            color: var(--color-texto-capitulo);
+        }
+
+        .contenido-capitulo p {
+            margin-bottom: 1.5em;
+        }
+
+        /* --- Layout de 2 Columnas para Desktop --- */
+        @media (min-width: 768px) {
+            .contenido-capitulo {
+                column-count: 2;
+                column-gap: 40px;
+            }
+
+            .frase-portada,
+            .frase-portadilla {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--color-negro-suave);
+            color: var(--color-blanco);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .footer h3 {
+            margin-bottom: 20px;
+        }
+
+        .footer a {
+            color: var(--color-blanco);
+            text-decoration: none;
+            border: 1px solid var(--color-blanco);
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .footer a:hover {
+            background-color: var(--color-blanco);
+            color: var(--color-negro-suave);
+        }
+    </style>
+</head>
+
+<body class="tema-mujeres-ciencia">
+
+    <!-- --- Navegación Principal --- -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="mas-mujeres-en-ciencia.html" class="active">Más Mujeres en Ciencia</a></li>
+            <li><a href="cecap.html">CECAP</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <!-- =================================================================
+             PORTADA PRINCIPAL DEL ARTÍCULO
+             ================================================================== -->
+        <section class="portada-principal" style="background-image: url('https://i.imgur.com/sMOrMqI.jpeg');">
+            <div class="frase-portada">
+                <p>Más Mujer en Ciencia: encuentros que inspiran</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         CAPÍTULO 01
+         ================================================================== -->
+        <section class="capitulo">
+            <div class="titulo-capitulo">
+                <span class="numero-capitulo">01</span>
+                <h1>Más Mujer en Ciencia</h1>
+            </div>
+            <div class="contenido-capitulo">
+                <p>Más Mujer en Ciencia es un proyecto bajo la órbita de Cultura Científica de la Dirección Nacional de
+                    Educación que busca despertar vocaciones científicas en niñas y adolescentes, a través de encuentros
+                    y
+                    talleres con mujeres científicas. A través de este proyecto, en Rocha y Lavalleja, hace más de siete
+                    años que se construye una red que derriba estereotipos y abre caminos.</p>
+                <p>Las brechas de género en las vocaciones científicas no son noticia. Se ha avanzado positivamente,
+                    pero
+                    aún queda mucho camino por recorrer. En ese contexto, hay espacios por donde entra la luz con
+                    personas
+                    que trabajan todos los días para cambiar esta realidad. Uno de esos espacios es Más Mujer en
+                    Ciencia, un
+                    proyecto coordinado por Cultura Científica del Ministerio de Educación y Cultura (MEC) que funciona
+                    en
+                    Rocha y Lavalleja, con el apoyo de ANEP, OEI e instituciones dedicadas a la ciencia y a la
+                    educación.
+                    Esta iniciativa posibilita que niñas y adolescentes uruguayas conozcan la ciencia de la mano de
+                    mujeres
+                    científicas uruguayas.</p>
+                <p>El camino empieza con encuentros o salidas de campo, que suceden cada quince días. En esos espacios,
+                    que
+                    tienen distintas características, las estudiantes conocen de primera mano a las científicas de
+                    nuestro
+                    país. “Este proyecto busca romper las barreras vinculadas a roles de género en materia científica,
+                    pero
+                    se logran muchas cosas más: hay estudiantes que encuentran nuevas opciones educativas”, dice
+                    Catalina
+                    Olid, referente del proyecto en Lavalleja.</p>
+                <p>“Queremos que las participantes se encuentren entre ellas puedan ver realidades distintas. Creemos
+                    que
+                    así se constituyen grupos de mujeres diversas, pero atravesadas por cuestiones similares”, agrega
+                    Carla
+                    Pereira, coordinadora del proyecto en Rocha.</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         PORTADILLA CAPÍTULO 02
+         ================================================================== -->
+        <section class="portadilla" style="background-image: url('https://i.imgur.com/9Hk2QOh.jpeg');">
+            <div class="frase-portadilla">
+                <p>“una red que derriba estereotipos y abre caminos.”</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         CAPÍTULO 02
+         ================================================================== -->
+        <section class="capitulo">
+            <div class="titulo-capitulo">
+                <span class="numero-capitulo">02</span>
+                <h1>Una propuesta que transforma</h1>
+            </div>
+            <div class="contenido-capitulo">
+                <p>La historia de Más Mujer en Ciencia surgió en el año 2017, cuando ambas referentes empezaron a
+                    identificar que, si bien en instancias como los Clubes de Ciencia, la participación de niñas era
+                    buena,
+                    la situación cambiaba en los años posteriores, cuando esas mismas estudiantes alcanzaban secundaria.
+                    Cada vez había menos participación femenina en estas iniciativas.</p>
+                <p>La información a la que accedieron sobre la participación de mujeres en carreras universitarias
+                    vinculadas con la ciencia intensificó esa alarma. Pero eso, lejos de paralizarlas, las alentó a
+                    crear un
+                    proyecto que ayudara a cambiar la realidad. Más Mujer en Ciencia nació con un propósito claro:
+                    fomentar
+                    vocaciones científicas en mujeres jóvenes, visibilizar la realidad de las mujeres dedicadas a la
+                    ciencia
+                    en nuestro país y acercarla a las estudiantes para derribar estereotipos de género, que persisten en
+                    espacios educativos y científicos.</p>
+                <p>La propuesta es voluntaria: las estudiantes que tengan entre 11 y 17 años y quieran participar, deben
+                    anotarse y saber que deberán cumplir con el cronograma anual de encuentros. En ese lapso, las
+                    chiquilinas tienen reuniones quincenales con mujeres científicas de todo el país, que se acercan a
+                    las
+                    instituciones educativas para compartir sus experiencias.</p>
+                <p>Desde el principio, el proyecto alcanzó a estudiantes de diferentes contextos. Carla recuerda que en
+                    el
+                    primer año tuvieron un caso emblemático: “Era una chica de Batlle y Ordóñez, un pueblo del interior
+                    de
+                    Lavalleja. Cada quince días, cuando había encuentros, ella salía a las cinco de la mañana desde su
+                    pueblo hacia Montevideo, porque no hay ómnibus directo hasta Minas. Llegaba al hogar estudiantil de
+                    la
+                    Intendencia de Lavalleja, almorzaba ahí, participaba de talleres de Robótica de un liceo de la
+                    ciudad y
+                    a las 17h se acercaba al encuentro de Más Mujer en Ciencia”, dice.</p>
+                <p>“En Lavalleja teníamos gente de Varela, de Solís de Mataojo, de Villa del Rosario y de otras tantas
+                    localidades rurales”, cuenta Carla. Catalina, por su parte, recuerda ese primer año como un tiempo
+                    desafiante: “Nos costó conseguir que las mujeres científicas se engancharan porque era algo
+                    desconocido
+                    y no teníamos redes sólidas en el territorio”, cuenta.</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         PORTADILLA CAPÍTULO 03
+         ================================================================== -->
+        <section class="portadilla" style="background-image: url('https://i.imgur.com/qL5Lphb.jpeg');">
+            <div class="frase-portadilla">
+                <p>“Cuando mi madre me mostró la propuesta y vi que podía conocer científicas uruguayas, sentí que se me
+                    abría otro mundo”</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         CAPÍTULO 03
+         ================================================================== -->
+        <section class="capitulo">
+            <div class="titulo-capitulo">
+                <span class="numero-capitulo">03</span>
+                <h1>La ciencia como una alternativa real</h1>
+            </div>
+            <div class="contenido-capitulo">
+                <p>Paz Hernández tiene 16 años, vive en Minas, Lavalleja, y este es el tercer año que elige participar
+                    del
+                    proyecto Más Mujer en Ciencia. “Cuando mi madre me mostró la propuesta y vi que podía conocer
+                    científicas uruguayas, sentí que se me abría otro mundo”, cuenta. “Siempre me gustó estar al aire
+                    libre,
+                    mirar insectores, perseguir caminitos de hormigas y leer sobre fauna y flora marina”, agrega.</p>
+                <p>De los encuentros del proyecto, recuerda especialmente una salida nocturna al final del año. “Aprendí
+                    que
+                    si un árbol brilla de lejos, probablemente tenga insectos. Fue muy lindo vivirlo. Fueron muchos los
+                    aprendizajes. Uno de los que más me llamó la atención fue saber que en el río Santa Lucía hay
+                    camarones.
+                    Eso me voló la cabeza”, dice.</p>
+                <p>El testimonio de Paz resume el corazón del proyecto: ciencia viva, cercana y compartida. “Aunque no
+                    te
+                    vayas a dedicar a la ciencia, esta experiencia te cambia la forma de ver el mundo”, asegura.
+                    “Además,
+                    conocés a otras gurisas con tu misma curiosidad. Y lo más importante: te das cuenta de que vos
+                    también
+                    podés”, cierra.</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         PORTADILLA CAPÍTULO 04
+         ================================================================== -->
+        <section class="portadilla" style="background-image: url('https://i.imgur.com/agVbpB2.jpeg');">
+            <div class="frase-portadilla">
+                <p>“No tenemos mujeres científicas en nuestras familias, este tipo de espacios se vuelven
+                    imprescindibles”
+                </p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         CAPÍTULO 04
+         ================================================================== -->
+        <section class="capitulo">
+            <div class="titulo-capitulo">
+                <span class="numero-capitulo">04</span>
+                <h1>Vocación y una red que sostiene</h1>
+            </div>
+            <div class="contenido-capitulo">
+                <p>Julieta García tiene 22 años, es de Rocha y participó en Más Mujer en Ciencia durante 2017 y 2018.
+                    Hoy,
+                    estudia Ciencia Política. Aunque su camino fue por el lado de las ciencias sociales, la experiencia
+                    en
+                    el proyecto fue clave en su camino: “Cada encuentro nos invitaba a salir de nuestra zona de confort
+                    para
+                    enfrentarnos a nuestros propios prejuicios”, cuenta.</p>
+                <p>Más Mujer en Ciencia fue, para ella, un espacio de desarrollo, que potenció sus habilidades de
+                    liderazgo
+                    y comunicación y mejoró la confianza en sí misma. La visita al Institut Pasteur y a la Torre de
+                    Antel,
+                    así como el recorrido por Cerrito de Indios, fueron momentos clave: “Me cambió la forma de ver la
+                    ciencia, pero sobre todo, la forma de ver lo que es ser mujer, estudiante y profesional en nuestro
+                    país”, dice.</p>
+                <p>“Este proyecto es una posibilidad de aprender, pero sobre todo de entender cómo podemos
+                    desarrollarnos en
+                    el mundo del estudio, en diferentes etapas. Es una oportunidad de entender que en Uruguay todas
+                    podemos
+                    ser protagonistas de un país más preparado para el futuro, con oportunidades más accesibles para
+                    todas y
+                    todos”, cierra.</p>
+                <p>Eugenia González, también rochense, hoy estudia Bioquímica Clínica en la Facultad de Química de la
+                    Universidad de la República, en Montevideo. Conoció Más Mujer en Ciencia cuando aún estaba en la
+                    escuela, a través de una de sus maestras, que notó el interés que tenía en temas de ciencia. Así fue
+                    que
+                    se acercó a escuchar una charla y decidió anotarse.</p>
+                <p>Para ella, el grupo fue clave: “Estar entre mujeres con intereses comunes, donde no saber algo no
+                    constituye una traba, sino una oportunidad, fue transformador. Para quienes no tenemos mujeres
+                    científicas en nuestras familias, este tipo de espacios se vuelven imprescindibles”, dice. Eugenia
+                    recuerda especialmente una actividad con dos paleontólogas que desmontó todos sus prejuicios: el
+                    taller
+                    se dividió en dos etapas, una teórica y otra práctica. “Conocí a la paleontología desde un lugar
+                    mucho
+                    más amigable y me cambió la perspectiva sobre esa ciencia. Esto me ocurrió también con otras
+                    ciencias.
+                    Me cambió la mirada”, explica.</p>
+                <p>“Estoy muy agradecida con las científicas, por hacerse el tiempo de acercarnos un poquito más a la
+                    ciencia en cada taller y por transmitirnos la importancia de las mujeres en la ciencia”, dice
+                    Eugenia.
+                    “El proyecto me ayudó a reconocer histórica y actualmente, el valor de las mujeres en la comunidad
+                    científica y también me hizo ver los caminos que faltan recorrer”, agrega. Para ella, haber formado
+                    parte de este proyecto fue una manera de acceder a información y conocimientos que le permitieron
+                    educar, de alguna forma, a su entorno sobre el valor que tiene la participación de las mujeres en la
+                    construcción de la ciencia.</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         PORTADILLA CAPÍTULO 05
+         ================================================================== -->
+        <section class="portadilla" style="background-image: url('https://i.imgur.com/sMOrMqI.jpeg');">
+            <div class="frase-portadilla">
+                <p>“Compartir la pasión por lo que hacemos me hace feliz y hacerlo con chicas jóvenes que tienen todo
+                    por
+                    delante, es especial”</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         CAPÍTULO 05
+         ================================================================== -->
+        <section class="capitulo">
+            <div class="titulo-capitulo">
+                <span class="numero-capitulo">05</span>
+                <h1>Derribar estereotipos, construir futuro</h1>
+            </div>
+            <div class="contenido-capitulo">
+                <p>Hay quienes dicen que el tiempo es oro. Elegir brindarlo a otras personas, para inspirar, y para
+                    mostrar
+                    el mundo científico, es una gran muestra de generosidad. Así entienden Carla y Catalina la
+                    participación
+                    y el compromiso de las científicas que deciden formar parte de Más Mujer en Ciencia.</p>
+                <p>Anita Aisenberg estudió la Licenciatura en Ciencias Biológicas en la Facultad de Ciencias de la
+                    Universidad de la República, donde también cursó su Maestría y su Doctorado. Actualmente, es
+                    profesora
+                    titular de Investigación Grado 5 en el Departamento de Ecología y Biología Evolutiva del Instituto
+                    de
+                    Investigaciones Biológicas Clemente Estable (IIBCE). Para ella, “la ciencia es todo” porque lleva
+                    esa
+                    mirada a todo lo que hace.</p>
+                <p>Su camino en la ciencia tiene que ver con una crianza basada en la exploración y en la importancia de
+                    salir a conocer el mundo, algo que sus padres le potenciaron siempre. Ingresó en Facultad de
+                    Ciencias a
+                    estudiar Bioquímica y fue en el último año de la carrera que decidió dar un giro: “Me fui a hacer un
+                    voluntariado a Costa Rica, con una playa de anidación de tortugas marinas y volví a Uruguay con la
+                    certeza de que quería estudiar el comportamiento animal, recuerda.</p>
+                <p>“Terminé trabajando con arácnidos, tratando de entender y comprender por qué los animales hacen lo
+                    que
+                    hacen y cómo eso puede cambiar a lo largo del tiempo y en respuesta a lo que tienen alrededor, tanto
+                    el
+                    entorno ambiental como social”, dice Aisenberg. “Decidí dedicarme al estudio del comportamiento de
+                    las
+                    hembras porque notaba que había una falta de miradas que prestaran atención al comportamiento de las
+                    hembras en la naturaleza en general”, agrega.</p>
+                <p>Anita forma parte de Más Mujer en Ciencia desde el inicio. “Soy investigadora en el IICBE y ahí
+                    entendemos que es importante salir a contar lo que hacemos y compartirlo con las personas, para que
+                    se
+                    lo apropien”, dice. “Compartir la pasión por lo que hacemos me hace feliz y hacerlo con chicas
+                    jóvenes
+                    que tienen todo por delante, es especial”, agrega.</p>
+                <p>“Más Mujer en Ciencia es esperanza. Es el encuentro con los intereses que tienen las chicas de
+                    distintas
+                    partes del país”, dice. Para Aisenberg, es importante que las estudiantes conecten con la
+                    incertidumbre:
+                    “La sociedad nos impone que tenemos que saber a qué queremos dedicarnos y eso no es fácil”, dice y
+                    asegura que su intención es “aportar un granito de arena para que esa búsqueda sea más amable”.</p>
+                <p>Anita sale de cada encuentro con el corazón pleno. “Trato de compartir la importancia de explorar la
+                    naturaleza, de entender un poquito más todo lo que nos rodea, de ir al encuentro cultural y de
+                    romper
+                    paradigmas”, dice. “Aprendo mucho de las preguntas y comentarios que surgen en cada espacio”,
+                    agrega.
+                </p>
+                <p>“Para mí, participar de este proyecto es un compromiso que sostengo desde hace años. Tiene que ver
+                    con
+                    inspirar vocaciones, pero también con contribuir a que realmente existan futuros posibles para todas
+                    y
+                    todos”, asegura.</p>
+                <p>La brecha de género en la ciencia es algo que Aisenberg ve todos los días: “Más allá de lo que dicen
+                    los
+                    números, como científica que ha logrado desarrollarse en su área, me doy cuenta de que todavía falta
+                    mucho y eso lo vivo de forma intensa, con ganas de seguir trabajando. Veo la necesidad de derribar
+                    esas
+                    barreras juntas, que muchas veces trascienden a la ciencia y que tienen que ver con aspectos que son
+                    transversales a toda la sociedad”, dice.</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         PORTADILLA CAPÍTULO 06
+         ================================================================== -->
+        <section class="portadilla" style="background-image: url('https://i.imgur.com/0av5g5l.jpeg');">
+            <div class="frase-portadilla">
+                <p>“Quiero que sepan que la ciencia es una posibilidad más para las mujeres, que se puede y que somos
+                    muchas
+                    mujeres haciendo ciencia aunque exista una subrepresentación en cargos de mayor jerarquía”</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         CAPÍTULO 06
+         ================================================================== -->
+        <section class="capitulo">
+            <div class="titulo-capitulo">
+                <span class="numero-capitulo">06</span>
+                <h1>La perseverancia como secreto</h1>
+            </div>
+            <div class="contenido-capitulo">
+                <p>Vanesa Amarelle tiene un sinfín de títulos y diplomas. No lo dice explícitamente, pero queda claro
+                    cuando
+                    cuenta su recorrido. Es licenciada en Bioquímica, tiene una maestría y un doctorado y es
+                    investigadora.
+                    Esos son solo algunos de sus logros profesionales.</p>
+                <p>Sin embargo, en 1999, cuando ingresó a la Facultad de Ciencias de la Udelar, lo hizo con un examen
+                    del
+                    liceo pendiente. La materia era Matemática A. Vanesa perdió ese examen y tuvo que esperar un año
+                    para
+                    volver a la facultad. “En ese momento, me afectó mucho eso porque yo ya tenía mi grupo de estudio y
+                    de
+                    amigos y tuve que irme para volver al año siguiente. No fue fácil”, recuerda Amarelle. Para ella esa
+                    es
+                    una de las etapas que más le importa contar en los encuentros de Más Mujer en Ciencia, de los que
+                    participa desde 2018.</p>
+                <p>“Me resulta interesante contarles a las chicas mi trayectoria profesional, pero también personal, mi
+                    historia. Me gusta decirles todo lo que me dio la ciencia: personas, experiencias, viajes, hasta
+                    conocer
+                    la Antártida, en mi caso. Creo que todo eso te aporta al crecimiento académico y personal”, dice.
+                    También aprovecha los encuentros para hacer experimentos, así las estudiantes logran acercarse al
+                    mundo
+                    microscópico porque ella trabaja con bacterias en su día a día.</p>
+                <p>Para Vanesa, la brecha de género en la ciencia es un aspecto clave a abordar: “Quiero que sepan que
+                    la
+                    ciencia es una posibilidad más para las mujeres, que se puede y que somos muchas mujeres haciendo
+                    ciencia aunque exista una subrepresentación en cargos de mayor jerarquía”, explica.</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         PORTADILLA CAPÍTULO 07
+         ================================================================== -->
+        <section class="portadilla" style="background-image: url('https://i.imgur.com/HE1d47P.jpeg');">
+            <div class="frase-portadilla">
+                <p>“Mi experiencia en Más Mujer en Ciencia es muy emocionante. Es un espacio de diálogo, de conversación
+                    e
+                    intercambio con mujeres adolescentes que llegan para acercarse de alguna forma a la ciencia”</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         CAPÍTULO 07
+         ================================================================== -->
+        <section class="capitulo">
+            <div class="titulo-capitulo">
+                <span class="numero-capitulo">07</span>
+                <h1>Las científicas, mujeres de carne y hueso</h1>
+            </div>
+            <div class="contenido-capitulo">
+                <p>Camila Gianotti es licenciada en Antropología, especializada en Arqueología. Trabaja como arqueóloga
+                    en
+                    el Centro Universitario Regional del Este (CURE) desde que se recibió, en 1998. Pero su historia con
+                    la
+                    ciencia se remonta a cuando tenía 12 años. Fue en un viaje a México, cuando todavía era una niña,
+                    que
+                    descubrió su pasión.</p>
+                <p>“Visité muchos lugares que me impresionaron, pero recuerdo especialmente el Museo Nacional de
+                    Antropología de México. Me impactó su potencia y me emocionó a tal punto que les dije a mis padres
+                    que
+                    me quería dedicar a la arqueología. Esa decisión nunca cambió”, cuenta Camila.</p>
+                <p>Conoció el proyecto Más Mujer en Ciencia de la mano de Catalina Olid y enseguida le pareció que se
+                    trataba de una iniciativa importante, por su impacto en las jóvenes estudiantes del interior del
+                    país,
+                    donde muchas veces la ciencia parece algo inaccesible. Rápidamente, decidió formar parte.</p>
+                <p>“Mi experiencia en Más Mujer en Ciencia es muy emocionante. Es un espacio de diálogo, de conversación
+                    e
+                    intercambio con mujeres adolescentes que llegan para acercarse de alguna forma a la ciencia”,
+                    cuenta.
+                    “Es fascinante mostrar lo que hacemos en el mundo científico y, en mi caso, en la arqueología: qué
+                    métodos usamos, cómo formulamos preguntas, cómo las respondemos, qué implican los trabajos de campo,
+                    qué
+                    sucede en los laboratorios y cómo es el vínculo entre la arqueología y otras disciplinas”, dice.</p>
+                <p>Para ella, cada encuentro es único y especial: “Siempre surgen cosas nuevas. Me encanta ver las
+                    caritas
+                    de curiosidad y satisfacción cuando conocen algo nuevo. Me llevo eso, me llevo sus preguntas, su
+                    curiosidad y sus ganas de profundizar para responder estos cuestionamientos. Y en eso veo el método
+                    científico, que tiene que ver con querer saber más: eso es lo que hace a una científica”, agrega.
+                </p>
+                <p>“Más Mujer en Ciencia contribuye enormemente a mostrar que todas podemos hacer ciencia, ser
+                    científicas,
+                    estudiar, investigar, formarnos, enseñar, trabajar de lo que nos gusta y desarrollarnos”, explica
+                    Gianotti, que además, resalta la importancia de tener otros intereses: “Somos madres, amigas,
+                    hermanas.
+                    Nos dedicamos a la ciencia, pero nos gustan también otras cosas. Somos de carne y hueso, como
+                    cualquiera”, cierra.</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         PORTADILLA CAPÍTULO 08
+         ================================================================== -->
+        <section class="portadilla" style="background-image: url('https://i.imgur.com/dL43xO2.jpeg');">
+            <div class="frase-portadilla">
+                <p>“Como maestra, encontrar una herramienta que transforma una realidad y que permite ‘torcer un poco el
+                    destino esperado’ es hacer realidad una utopía”</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         CAPÍTULO 08
+         ================================================================== -->
+        <section class="capitulo">
+            <div class="titulo-capitulo">
+                <span class="numero-capitulo">08</span>
+                <h1>Una herramienta que transforma</h1>
+            </div>
+            <div class="contenido-capitulo">
+                <p>Una de las particularidades de este proyecto tiene que ver con su origen, que responde al interés
+                    genuino
+                    de dos maestras que vieron una oportunidad en algo que parecía un desafío inabarcable. Entendieron
+                    que
+                    tenían algo para hacer y lo hicieron.</p>
+                <p>“Yo soy maestra, pero me gusta definirme como educadora, con el sentido que Paulo Freire le daba”,
+                    dice
+                    Carla Pereira, una de las coordinadoras del proyecto. “Desde ese lugar, encontrar una herramienta
+                    que
+                    transforma una realidad y que permite ‘torcer un poco el destino esperado’ es hacer realidad una
+                    utopía”, asegura.</p>
+                <p>“Para mí, Más Mujer en Ciencia es motivación y emoción y eso se cristaliza en los avances de las
+                    chiquilinas. Es un espacio donde se construye una voz colectiva y, a la vez, voces individuales. Y
+                    es a
+                    través de esas voces, que cada una puede construir lo que quiere ser”, agrega.</p>
+                <p>Para Catalina Olid, también coordinadora de Más Mujer en Ciencia, este proyecto es “como un bebé”
+                    porque
+                    lo pensaron desde cero y lo siguen haciendo de esa forma. “Estamos presentes en todo lo que pasa. En
+                    las
+                    actividades y sosteniendo a las chiquilinas, en contacto con las familias y con las instituciones”,
+                    explica.</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         PORTADILLA CAPÍTULO 09
+         ================================================================== -->
+        <section class="portadilla" style="background-image: url('https://i.imgur.com/DCSQOAK.jpeg');">
+            <div class="frase-portadilla">
+                <p>“Para mí fue importante que ella viera que con trabajo, estudio, determinación y compromiso, las
+                    mujeres
+                    podemos lograr todo lo que nos proponemos”</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         CAPÍTULO 09
+         ================================================================== -->
+        <section class="capitulo">
+            <div class="titulo-capitulo">
+                <span class="numero-capitulo">09</span>
+                <h1>Familias que acompañan, un eslabón clave</h1>
+            </div>
+            <div class="contenido-capitulo">
+                <p>Las estudiantes que eligen formar parte de este proyecto, en su gran mayoría, lo hacen con el apoyo
+                    de
+                    sus familias. De hecho, en muchos casos, es a través de familiares que toman conocimiento de Más
+                    Mujer
+                    en Ciencia. Son muchas las estudiantes que viajan para acceder a los encuentros, y más allá de los
+                    costos, que pueden o no estar subvencionados, el acompañamiento es clave.</p>
+                <p>Laura Acosta es maestra y madre de Julieta, una de las estudiantes que participó en Más Mujer en
+                    Ciencia.
+                    “Me enteré del proyecto a través de Catalina Olid y Sylvia Perlas, gestoras del proyecto”, cuenta.
+                    Fue
+                    ella quien le comentó sobre esta alternativa a su hija: “Julieta es curiosa por la naturaleza y
+                    también
+                    tiene un interés especial en los temas de género”, dice.</p>
+                <p>El año en el que Julieta participó del proyecto fue muy enriquecedor tanto para ella, como para
+                    Laura:
+                    “Después de cada encuentro, Juli tenía un sinfín de anécdotas, datos, pruebas, de todo”, recuerda.
+                    “Para
+                    mí fue importante que ella viera que con trabajo, estudio, determinación y compromiso, las mujeres
+                    podemos lograr todo lo que nos proponemos”, agrega.</p>
+                <p>Cuando Laura cuenta la experiencia, lo hace en primera persona: “Visitamos laboratorios, participamos
+                    de
+                    experiencias de intercambio y conocimos universidades”, dice, y aclara: “Hablo en primera persona
+                    porque
+                    la acompañé y pude vivir todo eso con ella”.</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         PORTADILLA CAPÍTULO 10
+         ================================================================== -->
+        <section class="portadilla" style="background-image: url('https://i.imgur.com/UmHJrHl.jpeg');">
+            <div class="frase-portadilla">
+                <p>“Tenemos que construir lo que queremos, sin perder miradas interseccionales”</p>
+            </div>
+        </section>
+
+        <!-- =================================================================
+         CAPÍTULO 10
+         ================================================================== -->
+        <section class="capitulo">
+            <div class="titulo-capitulo">
+                <span class="numero-capitulo">10</span>
+                <h1>La mirada puesta en el futuro</h1>
+            </div>
+            <div class="contenido-capitulo">
+                <p>Un proyecto que empezó como sueño en 2017 y que hoy lleva ocho años funcionando, naturalmente, ha
+                    transitado diferentes momentos. Queda claro que lo que sostiene a Más Mujer en Ciencia son las
+                    personas
+                    que están detrás, haciendo que las cosas pasen. Catalina y Carla como líderes, y un equipo
+                    comprometido
+                    con la misión de acercar la ciencia a más mujeres en nuestro país.</p>
+                <p>Para Carla, la mirada está puesta en pasar a ser programa, sin dejar de ser una construcción
+                    colectiva
+                    entre adolescentes, científicas, líderes de políticas públicas e instituciones. “Tenemos que
+                    construir
+                    lo que queremos, sin perder miradas interseccionales”, explica.</p>
+                <p>“Podemos ser un programa más grande, que sanee limitaciones económicas y que escuche las voces de las
+                    destinatarias, para construir propuestas respondan a eso", cierra.</p>
+                <p>Catalina tiene una mirada coincidente con la de Carla. Está convencida de que Más Mujer en Ciencia
+                    tiene
+                    potencial de crecimiento, pero asegura que la única forma de que eso suceda es trabajando en red:
+                    “Nada
+                    se hace de forma aislada: necesitamos apoyo del CURE, de las intendencias, de las inspecciones, del
+                    Instituto de Formación Docente, de los liceos y centros de estudio, de los docentes que se interesan
+                    y
+                    alientan a sus alumnas a que se presenten”, cierra.</p>
+                <p>Más Mujer en Ciencia no es solo un programa: es un punto de partida, una chispa que enciende dudas,
+                    preguntas, vocaciones e intereses. Es una red que acompaña, más allá del aula. En cada encuentro, en
+                    cada historia compartida, se tejen la confianza, la inspiración y el deseo de construir un mundo más
+                    justo y con más oportunidades.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =================================================================
+         FOOTER
+         ================================================================== -->
+    <footer class="footer">
+        <h3>Voces que Inspiran</h3>
+        <p>Este es un proyecto que busca visibilizar historias y oportunidades.</p>
+        <br><br>
+        <p>También puedes leer nuestro primer artículo:</p>
+        <br>
+        <!-- NOTA: Cambiar 'cecap.html' por la URL correcta del artículo de CECAP -->
+        <a href="cecap.html">Los CECAP, un espacio para volver a creer</a>
+    </footer>
+
+    <script>
+        // Este espacio puede ser usado para futuras funcionalidades de JavaScript.
+        // Por ejemplo, animaciones al hacer scroll, un menú de navegación dinámico, etc.
+        console.log("Página 'Más Mujeres en Ciencia' cargada.");
+    </script>
+
+</body>
+
+</html>
