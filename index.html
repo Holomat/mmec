@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <script>if(screen.width<=480)document.documentElement.classList.add('force-mobile');</script>
     <title>Voces que Inspiran - Más Mujeres en Ciencia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +21,10 @@
         html,
         body {
             width: 100%;
+            max-width: 100%;
             overflow-x: hidden;
             font-family: 'Inter', sans-serif;
+            -webkit-text-size-adjust: 100%;
         }
 
         /* ---- HEADER ---- */
@@ -107,18 +110,16 @@
             transition: background-color 0.3s ease;
         }
 
-        /* Mobile menu dropdown */
+        /* Mobile menu */
         .mobile-menu {
             display: none;
             position: fixed;
             top: 0;
             right: 0;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
             background-color: rgba(15, 23, 30, 0.6);
-            /* Translucent dark tint */
             backdrop-filter: blur(24px);
-            /* Heavy liquid glass effect */
             -webkit-backdrop-filter: blur(24px);
             z-index: 2000;
             flex-direction: column;
@@ -167,7 +168,7 @@
             opacity: 0.7;
         }
 
-        /* Overlay oscuro detrás del menú */
+        /* Overlay */
         .mobile-overlay {
             display: none;
             position: fixed;
@@ -334,6 +335,30 @@
             color: #CDF6FF;
             fill: #CDF6FF;
         }
+
+        /* Hamburger color dinámico (mismo color que ISO) */
+        .header.header-hero .hamburger-btn { color: #CDF6FF; }
+        .header.header-s01 .hamburger-btn { color: #E9FDC0; }
+        .header.header-b01 .hamburger-btn { color: #553196; }
+        .header.header-s02 .hamburger-btn { color: #E3EED0; }
+        .header.header-b02 .hamburger-btn { color: #262D1D; }
+        .header.header-s03 .hamburger-btn { color: #EAEAEA; }
+        .header.header-b03 .hamburger-btn { color: #5C6B72; }
+        .header.header-s04 .hamburger-btn { color: #FDFCF9; }
+        .header.header-b04 .hamburger-btn { color: #2447B9; }
+        .header.header-s05 .hamburger-btn { color: #E4DDF0; }
+        .header.header-b05 .hamburger-btn { color: #8E8021; }
+        .header.header-s06 .hamburger-btn { color: #DFDAC3; }
+        .header.header-b06 .hamburger-btn { color: #11161C; }
+        .header.header-s07 .hamburger-btn { color: #9AA0CF; }
+        .header.header-b07 .hamburger-btn { color: #221F20; }
+        .header.header-s08 .hamburger-btn { color: #E4DDF0; }
+        .header.header-b08 .hamburger-btn { color: #42304A; }
+        .header.header-s09 .hamburger-btn { color: #F0EEE6; }
+        .header.header-b09 .hamburger-btn { color: #4A6493; }
+        .header.header-s10 .hamburger-btn { color: #E3EED0; }
+        .header.header-b10 .hamburger-btn { color: #262D1D; }
+        .header.header-footer .hamburger-btn { color: #CDF6FF; }
 
         /* ---- HERO ---- */
         .hero {
@@ -806,8 +831,7 @@
                 line-height: 1.1;
                 overflow-wrap: break-word;
                 word-wrap: break-word;
-                hyphens: auto;
-                /* Help break words gracefully */
+                hyphens: none;
             }
 
             .hero-logo-item img {
@@ -845,12 +869,111 @@
                 padding: 6px 12px;
             }
         }
+
+        /* --- iOS Safari fallback: JS adds .force-mobile when screen.width ≤ 480 but viewport lies --- */
+        .force-mobile .header {
+            padding: 12px 20px;
+            max-height: 60px;
+        }
+
+        .force-mobile .header-logo {
+            width: 24px;
+            height: 24px;
+        }
+
+        .force-mobile .header-right {
+            gap: 12px;
+        }
+
+        .force-mobile .header-title,
+        .force-mobile .header-button {
+            display: none;
+        }
+
+        .force-mobile .hamburger-btn {
+            display: flex;
+            color: currentColor;
+        }
+
+        .force-mobile section[class*="seccion-"]:not([class*="bajadita"]) {
+            padding: 40px 20px 60px 20px;
+        }
+
+        .force-mobile .section-number {
+            font-size: 20px;
+            margin-bottom: 50px;
+        }
+
+        .force-mobile .main-title {
+            font-size: 28px;
+            margin-bottom: 80px;
+        }
+
+        .force-mobile .content-wrapper {
+            width: 100%;
+            margin-left: 0;
+            gap: 30px;
+        }
+
+        .force-mobile .text-column {
+            font-size: 16px;
+            max-width: 100%;
+        }
+
+        .force-mobile .hero {
+            padding: 20px 20px 60px 20px;
+        }
+
+        .force-mobile .hero-title {
+            font-size: 36px;
+            max-width: 100%;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: none;
+        }
+
+        .force-mobile .hero-logo-item img {
+            height: 40px;
+        }
+
+        .force-mobile section[class*="bajadita"] {
+            padding: 40px 20px;
+        }
+
+        .force-mobile .image-box {
+            height: 0;
+            padding-bottom: 80%;
+        }
+
+        .force-mobile .bajadita-text {
+            font-size: 18px;
+            width: 100%;
+        }
+
+        .force-mobile .footer {
+            padding: 40px 20px;
+        }
+
+        .force-mobile .footer-tagline {
+            font-size: 22px;
+        }
+
+        .force-mobile .footer-logo-item img {
+            height: 50px;
+        }
+
+        .force-mobile .footer-link {
+            font-size: 12px;
+            padding: 6px 12px;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
+    <!-- NAV UNIFICADO — inicio -->
     <header class="header" id="main-header">
         <div class="header-content">
             <div class="header-left">
@@ -868,11 +991,9 @@
                 </div>
             </div>
             <div class="header-right">
-                <!-- Desktop nav -->
                 <div class="header-title">VOCES QUE INSPIRAN</div>
-                <a href="cecap.html" class="header-button">CECAP</a>
-                <a href="index.html" class="header-button active">MÁS MUJERES EN CIENCIA</a>
-                <!-- Hamburger (mobile) -->
+                <a href="cecap.html" class="header-button" data-page="cecap">CECAP</a>
+                <a href="index.html" class="header-button" data-page="index">MÁS MUJER EN CIENCIA</a>
                 <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú">
                     <span></span><span></span><span></span>
                 </button>
@@ -880,13 +1001,13 @@
         </div>
     </header>
 
-    <!-- Mobile menu overlay -->
     <div class="mobile-overlay" id="mobile-overlay"></div>
     <nav class="mobile-menu" id="mobile-menu">
-        <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Cerrar menú">✕</button>
-        <a href="cecap.html">CECAP</a>
-        <a href="index.html" class="active">MÁS MUJERES EN CIENCIA</a>
+        <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Cerrar menú">&#x2715;</button>
+        <a href="cecap.html" data-page="cecap">CECAP</a>
+        <a href="index.html" data-page="index">MÁS MUJER EN CIENCIA</a>
     </nav>
+    <!-- NAV UNIFICADO — fin -->
 
     <!-- HERO -->
     <section class="hero" id="sec-hero">
@@ -934,7 +1055,7 @@
         <div class="bajadita-container">
             <div class="image-box"></div>
             <div class="bajadita-text">
-                <h3>"una red que derriba estereotipos y abre caminos."</h3>
+                <h3>"Una red que derriba estereotipos y abre caminos."</h3>
             </div>
         </div>
     </section>
@@ -1368,25 +1489,31 @@
         window.addEventListener('scroll', updateHeader);
         updateHeader();
 
-        // --- Hamburger menu ---
+        // --- NAV UNIFICADO JS — inicio ---
+        // 1. Detección de página activa por URL
+        const currentPage = location.pathname.includes('cecap') ? 'cecap' : 'index';
+        document.querySelectorAll('[data-page]').forEach(el => {
+            if (el.dataset.page === currentPage) el.classList.add('active');
+        });
+
+        // 2. Hamburger open/close
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileOverlay = document.getElementById('mobile-overlay');
         const mobileClose = document.getElementById('mobile-menu-close');
 
-        function openMenu() {
-            mobileMenu.classList.add('open');
-            mobileOverlay.classList.add('open');
-        }
-
-        function closeMenu() {
-            mobileMenu.classList.remove('open');
-            mobileOverlay.classList.remove('open');
-        }
+        function openMenu() { mobileMenu.classList.add('open'); mobileOverlay.classList.add('open'); }
+        function closeMenu() { mobileMenu.classList.remove('open'); mobileOverlay.classList.remove('open'); }
 
         hamburgerBtn.addEventListener('click', openMenu);
         mobileClose.addEventListener('click', closeMenu);
         mobileOverlay.addEventListener('click', closeMenu);
+
+        // 3. iOS Safari force-mobile detection
+        if (screen.width <= 480 && window.innerWidth > 480) {
+            document.documentElement.classList.add('force-mobile');
+        }
+        // --- NAV UNIFICADO JS — fin ---
     </script>
 
 </body>
