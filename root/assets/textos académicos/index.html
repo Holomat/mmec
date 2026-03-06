@@ -1405,15 +1405,36 @@
         debugBox.style.pointerEvents = 'none';
         document.body.appendChild(debugBox);
 
+        function findOverflow() {
+            const vw = document.documentElement.clientWidth;
+            let worst = { el: null, overflow: 0 };
+            document.querySelectorAll('*').forEach(el => {
+                const r = el.getBoundingClientRect();
+                const over = r.right - vw;
+                if (over > worst.overflow) {
+                    worst = { el: el.tagName + (el.className ? '.' + el.className.split(' ')[0] : ''), overflow: Math.round(over) };
+                }
+            });
+            return worst;
+        }
+
         function updateDebug() {
+            const ov = findOverflow();
+            const hasOverflow = document.documentElement.scrollWidth > document.documentElement.clientWidth;
             debugBox.innerHTML = `
-                Win Inner: ${window.innerWidth}px<br>
-                Doc Scroll: ${document.documentElement.scrollWidth}px<br>
-                Body Client: ${document.body.clientWidth}px
+                VP: ${window.innerWidth}x${window.innerHeight}<br>
+                Screen: ${screen.width}x${screen.height}<br>
+                DocClient: ${document.documentElement.clientWidth}px<br>
+                DocScroll: ${document.documentElement.scrollWidth}px<br>
+                BodyScroll: ${document.body.scrollWidth}px<br>
+                Overflow: ${hasOverflow ? '⚠ SI' : '✓ NO'}<br>
+                ${ov.el ? 'Culpable: ' + ov.el + ' (+' + ov.overflow + 'px)' : ''}
             `;
         }
 
         window.addEventListener('resize', updateDebug);
+        window.addEventListener('scroll', updateDebug);
+        setTimeout(updateDebug, 500);
         updateDebug();
     </script>
 
