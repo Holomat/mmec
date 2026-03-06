@@ -872,6 +872,105 @@
                 padding: 6px 12px;
             }
         }
+
+        /* --- iOS Safari fallback: JS adds .force-mobile to <html> when screen.width ≤ 480 but viewport lies --- */
+        .force-mobile .header {
+            padding: 12px 20px;
+            max-height: 60px;
+        }
+
+        .force-mobile .header-logo {
+            width: 24px;
+            height: 24px;
+        }
+
+        .force-mobile .header-right {
+            gap: 12px;
+        }
+
+        .force-mobile .header-title,
+        .force-mobile .header-button {
+            display: none;
+        }
+
+        .force-mobile .hamburger-btn {
+            display: flex;
+            color: currentColor;
+        }
+
+        .force-mobile section[class*="seccion-"]:not([class*="bajadita"]) {
+            padding: 40px 20px 60px 20px;
+        }
+
+        .force-mobile .section-number {
+            font-size: 20px;
+            margin-bottom: 50px;
+        }
+
+        .force-mobile .main-title {
+            font-size: 28px;
+            margin-bottom: 80px;
+        }
+
+        .force-mobile .content-wrapper {
+            width: 100%;
+            margin-left: 0;
+            gap: 30px;
+        }
+
+        .force-mobile .text-column {
+            font-size: 16px;
+            max-width: 100%;
+        }
+
+        .force-mobile .hero {
+            padding: 20px 20px 60px 20px;
+        }
+
+        .force-mobile .hero-title {
+            font-size: 36px;
+            max-width: 100%;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: none;
+        }
+
+        .force-mobile .hero-logo-item img {
+            height: 40px;
+        }
+
+        .force-mobile section[class*="bajadita"] {
+            padding: 40px 20px;
+        }
+
+        .force-mobile .image-box {
+            height: 0;
+            padding-bottom: 80%;
+        }
+
+        .force-mobile .bajadita-text {
+            font-size: 18px;
+            width: 100%;
+        }
+
+        .force-mobile .footer {
+            padding: 40px 20px;
+        }
+
+        .force-mobile .footer-tagline {
+            font-size: 22px;
+        }
+
+        .force-mobile .footer-logo-item img {
+            height: 50px;
+        }
+
+        .force-mobile .footer-link {
+            font-size: 12px;
+            padding: 6px 12px;
+        }
     </style>
 </head>
 
@@ -1418,52 +1517,14 @@
         mobileClose.addEventListener('click', closeMenu);
         mobileOverlay.addEventListener('click', closeMenu);
 
-        // --- DEBUG VP MOBILE ---
-        const debugBox = document.createElement('div');
-        debugBox.style.position = 'fixed';
-        debugBox.style.bottom = '10px';
-        debugBox.style.right = '10px';
-        debugBox.style.background = 'rgba(255, 0, 0, 0.8)';
-        debugBox.style.color = 'white';
-        debugBox.style.padding = '10px';
-        debugBox.style.fontSize = '12px';
-        debugBox.style.fontFamily = 'monospace';
-        debugBox.style.zIndex = '9999';
-        debugBox.style.borderRadius = '5px';
-        debugBox.style.pointerEvents = 'none';
-        document.body.appendChild(debugBox);
-
-        function findOverflow() {
-            const vw = document.documentElement.clientWidth;
-            let worst = { el: null, overflow: 0 };
-            document.querySelectorAll('*').forEach(el => {
-                const r = el.getBoundingClientRect();
-                const over = r.right - vw;
-                if (over > worst.overflow) {
-                    worst = { el: el.tagName + (el.className ? '.' + el.className.split(' ')[0] : ''), overflow: Math.round(over) };
-                }
-            });
-            return worst;
+        // --- iOS Safari: force mobile layout via JS ---
+        function applyMobileIfNeeded() {
+            if (screen.width <= 480 && window.innerWidth > 480) {
+                document.documentElement.classList.add('force-mobile');
+            }
         }
-
-        function updateDebug() {
-            const ov = findOverflow();
-            const hasOverflow = document.documentElement.scrollWidth > document.documentElement.clientWidth;
-            debugBox.innerHTML = `
-                VP: ${window.innerWidth}x${window.innerHeight}<br>
-                Screen: ${screen.width}x${screen.height}<br>
-                DocClient: ${document.documentElement.clientWidth}px<br>
-                DocScroll: ${document.documentElement.scrollWidth}px<br>
-                BodyScroll: ${document.body.scrollWidth}px<br>
-                Overflow: ${hasOverflow ? '⚠ SI' : '✓ NO'}<br>
-                ${ov.el ? 'Culpable: ' + ov.el + ' (+' + ov.overflow + 'px)' : ''}
-            `;
-        }
-
-        window.addEventListener('resize', updateDebug);
-        window.addEventListener('scroll', updateDebug);
-        setTimeout(updateDebug, 500);
-        updateDebug();
+        applyMobileIfNeeded();
+        window.addEventListener('resize', applyMobileIfNeeded);
     </script>
 
 </body>
