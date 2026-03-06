@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Voces que Inspiran - Más Mujeres en Ciencia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,35 +11,32 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Sora:wght@400;600;800;900&family=Instrument+Serif:wght@400&display=swap"
         rel="stylesheet">
     <style>
-        @viewport {
-            width: device-width;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            max-width: 100%;
         }
 
         html {
-            overflow-x: hidden;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
             font-family: 'Inter', sans-serif;
             -webkit-text-size-adjust: 100%;
         }
 
         body {
-            width: 100vw;
-            max-width: 100vw;
+            overflow-y: scroll;
             overflow-x: hidden;
-            position: relative;
+            height: 100%;
+            width: 100%;
+            max-width: 100vw;
+            -webkit-overflow-scrolling: touch;
         }
 
         .page-wrapper {
             width: 100%;
-            max-width: 100vw;
-            overflow: hidden;
-            position: relative;
+            overflow-x: hidden;
         }
 
         /* ---- HEADER ---- */
@@ -423,7 +420,7 @@
 
         .text-column {
             flex: 1;
-            min-width: min(250px, 100%);
+            min-width: 250px;
             max-width: calc(100% - 24.5px);
             font-weight: 500;
             font-size: 18px;
