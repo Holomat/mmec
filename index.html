@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <script>if(screen.width<=480)document.documentElement.classList.add('force-mobile');</script>
-    <title>Voces que Inspiran - Más Mujeres en Ciencia</title>
+    <title>Voces que Inspiran</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -26,6 +26,10 @@
             font-family: 'Inter', sans-serif;
             -webkit-text-size-adjust: 100%;
         }
+
+        /* ---- ARTICLE TOGGLE ---- */
+        .article { display: none; }
+        .article.active { display: block; }
 
         /* ---- HEADER ---- */
         .header {
@@ -187,7 +191,7 @@
             display: block;
         }
 
-        /* Colores dinámicos del header según sección */
+        /* Colores dinámicos del header según sección — MMEC */
         .header.header-hero .header-logo svg path,
         .header.header-hero .header-title,
         .header.header-hero .header-button {
@@ -342,7 +346,7 @@
             fill: #CDF6FF;
         }
 
-        /* Hamburger color dinámico (mismo color que ISO) */
+        /* Hamburger color dinámico — MMEC */
         .header.header-hero .hamburger-btn { color: #CDF6FF; }
         .header.header-s01 .hamburger-btn { color: #E9FDC0; }
         .header.header-b01 .hamburger-btn { color: #553196; }
@@ -365,6 +369,56 @@
         .header.header-s10 .hamburger-btn { color: #E3EED0; }
         .header.header-b10 .hamburger-btn { color: #262D1D; }
         .header.header-footer .hamburger-btn { color: #CDF6FF; }
+
+        /* Colores dinámicos del header según sección — CECAP */
+        .header.header-cecap-hero .header-logo svg path, .header.header-cecap-hero .header-title, .header.header-cecap-hero .header-button { color: #CDF6FF; fill: #CDF6FF; }
+        .header.header-cecap-s01 .header-logo svg path, .header.header-cecap-s01 .header-title, .header.header-cecap-s01 .header-button { color: #e7e3dd; fill: #e7e3dd; }
+        .header.header-cecap-b01 .header-logo svg path, .header.header-cecap-b01 .header-title, .header.header-cecap-b01 .header-button { color: #553196; fill: #553196; }
+        .header.header-cecap-s02 .header-logo svg path, .header.header-cecap-s02 .header-title, .header.header-cecap-s02 .header-button { color: #E3EED0; fill: #E3EED0; }
+        .header.header-cecap-b02 .header-logo svg path, .header.header-cecap-b02 .header-title, .header.header-cecap-b02 .header-button { color: #262D1D; fill: #262D1D; }
+        .header.header-cecap-s03 .header-logo svg path, .header.header-cecap-s03 .header-title, .header.header-cecap-s03 .header-button { color: #E4DDF0; fill: #E4DDF0; }
+        .header.header-cecap-b03 .header-logo svg path, .header.header-cecap-b03 .header-title, .header.header-cecap-b03 .header-button { color: #42304A; fill: #42304A; }
+        .header.header-cecap-s04 .header-logo svg path, .header.header-cecap-s04 .header-title, .header.header-cecap-s04 .header-button { color: #EAEAEA; fill: #EAEAEA; }
+        .header.header-cecap-b04 .header-logo svg path, .header.header-cecap-b04 .header-title, .header.header-cecap-b04 .header-button { color: #5C6B72; fill: #5C6B72; }
+        .header.header-cecap-s05 .header-logo svg path, .header.header-cecap-s05 .header-title, .header.header-cecap-s05 .header-button { color: #FDFCF9; fill: #FDFCF9; }
+        .header.header-cecap-b05 .header-logo svg path, .header.header-cecap-b05 .header-title, .header.header-cecap-b05 .header-button { color: #2447B9; fill: #2447B9; }
+        .header.header-cecap-s06 .header-logo svg path, .header.header-cecap-s06 .header-title, .header.header-cecap-s06 .header-button { color: #DFDAC3; fill: #DFDAC3; }
+        .header.header-cecap-b06 .header-logo svg path, .header.header-cecap-b06 .header-title, .header.header-cecap-b06 .header-button { color: #11161C; fill: #11161C; }
+        .header.header-cecap-s07 .header-logo svg path, .header.header-cecap-s07 .header-title, .header.header-cecap-s07 .header-button { color: #9AA0CF; fill: #9AA0CF; }
+        .header.header-cecap-b07 .header-logo svg path, .header.header-cecap-b07 .header-title, .header.header-cecap-b07 .header-button { color: #221F20; fill: #221F20; }
+        .header.header-cecap-s08 .header-logo svg path, .header.header-cecap-s08 .header-title, .header.header-cecap-s08 .header-button { color: #E9FDC0; fill: #E9FDC0; }
+        .header.header-cecap-b08 .header-logo svg path, .header.header-cecap-b08 .header-title, .header.header-cecap-b08 .header-button { color: #8E8021; fill: #8E8021; }
+        .header.header-cecap-s09 .header-logo svg path, .header.header-cecap-s09 .header-title, .header.header-cecap-s09 .header-button { color: #9AA0CF; fill: #9AA0CF; }
+        .header.header-cecap-b09 .header-logo svg path, .header.header-cecap-b09 .header-title, .header.header-cecap-b09 .header-button { color: #221F20; fill: #221F20; }
+        .header.header-cecap-s10 .header-logo svg path, .header.header-cecap-s10 .header-title, .header.header-cecap-s10 .header-button { color: #F0EEE6; fill: #F0EEE6; }
+        .header.header-cecap-b10 .header-logo svg path, .header.header-cecap-b10 .header-title, .header.header-cecap-b10 .header-button { color: #4A6493; fill: #4A6493; }
+        .header.header-cecap-s11 .header-logo svg path, .header.header-cecap-s11 .header-title, .header.header-cecap-s11 .header-button { color: #E3EED0; fill: #E3EED0; }
+        .header.header-cecap-b11 .header-logo svg path, .header.header-cecap-b11 .header-title, .header.header-cecap-b11 .header-button { color: #262D1D; fill: #262D1D; }
+
+        /* Hamburger CECAP colors */
+        .header.header-cecap-hero .hamburger-btn { color: #CDF6FF; }
+        .header.header-cecap-s01 .hamburger-btn { color: #e7e3dd; }
+        .header.header-cecap-b01 .hamburger-btn { color: #553196; }
+        .header.header-cecap-s02 .hamburger-btn { color: #E3EED0; }
+        .header.header-cecap-b02 .hamburger-btn { color: #262D1D; }
+        .header.header-cecap-s03 .hamburger-btn { color: #E4DDF0; }
+        .header.header-cecap-b03 .hamburger-btn { color: #42304A; }
+        .header.header-cecap-s04 .hamburger-btn { color: #EAEAEA; }
+        .header.header-cecap-b04 .hamburger-btn { color: #5C6B72; }
+        .header.header-cecap-s05 .hamburger-btn { color: #FDFCF9; }
+        .header.header-cecap-b05 .hamburger-btn { color: #2447B9; }
+        .header.header-cecap-s06 .hamburger-btn { color: #DFDAC3; }
+        .header.header-cecap-b06 .hamburger-btn { color: #11161C; }
+        .header.header-cecap-s07 .hamburger-btn { color: #9AA0CF; }
+        .header.header-cecap-b07 .hamburger-btn { color: #221F20; }
+        .header.header-cecap-s08 .hamburger-btn { color: #E9FDC0; }
+        .header.header-cecap-b08 .hamburger-btn { color: #8E8021; }
+        .header.header-cecap-s09 .hamburger-btn { color: #9AA0CF; }
+        .header.header-cecap-b09 .hamburger-btn { color: #221F20; }
+        .header.header-cecap-s10 .hamburger-btn { color: #F0EEE6; }
+        .header.header-cecap-b10 .hamburger-btn { color: #4A6493; }
+        .header.header-cecap-s11 .hamburger-btn { color: #E3EED0; }
+        .header.header-cecap-b11 .hamburger-btn { color: #262D1D; }
 
         /* ---- HERO ---- */
         .hero {
@@ -452,7 +506,7 @@
             margin-bottom: 0;
         }
 
-        /* Colores por sección */
+        /* Colores por sección — MMEC */
         .seccion-01 {
             background-color: #8E8021;
         }
@@ -553,6 +607,62 @@
             color: #E3EED0;
         }
 
+        /* Colores por sección — CECAP (scoped) */
+        #article-cecap .hero { background-color: #094654; color: #CDF6FF; }
+        #article-cecap .seccion-01 { background-color: #553196; }
+        #article-cecap .seccion-01 .section-number, #article-cecap .seccion-01 .main-title, #article-cecap .seccion-01 .text-column { color: #e7e3dd; }
+        #article-cecap .seccion-02 { background-color: #262D1D; }
+        #article-cecap .seccion-02 .section-number, #article-cecap .seccion-02 .main-title, #article-cecap .seccion-02 .text-column { color: #E3EED0; }
+        #article-cecap .seccion-03 { background-color: #42304A; }
+        #article-cecap .seccion-03 .section-number, #article-cecap .seccion-03 .main-title, #article-cecap .seccion-03 .text-column { color: #E4DDF0; }
+        #article-cecap .seccion-04 { background-color: #5C6B72; }
+        #article-cecap .seccion-04 .section-number, #article-cecap .seccion-04 .main-title, #article-cecap .seccion-04 .text-column { color: #EAEAEA; }
+        #article-cecap .seccion-05 { background-color: #2447B9; }
+        #article-cecap .seccion-05 .section-number, #article-cecap .seccion-05 .main-title, #article-cecap .seccion-05 .text-column { color: #FDFCF9; }
+        #article-cecap .seccion-06 { background-color: #11161C; }
+        #article-cecap .seccion-06 .section-number, #article-cecap .seccion-06 .main-title, #article-cecap .seccion-06 .text-column { color: #DFDAC3; }
+        #article-cecap .seccion-07 { background-color: #221F20; }
+        #article-cecap .seccion-07 .section-number, #article-cecap .seccion-07 .main-title, #article-cecap .seccion-07 .text-column { color: #9AA0CF; }
+        #article-cecap .seccion-08 { background-color: #8E8021; }
+        #article-cecap .seccion-08 .section-number, #article-cecap .seccion-08 .main-title, #article-cecap .seccion-08 .text-column { color: #E9FDC0; }
+        #article-cecap .seccion-09 { background-color: #221F20; }
+        #article-cecap .seccion-09 .section-number, #article-cecap .seccion-09 .main-title, #article-cecap .seccion-09 .text-column { color: #9AA0CF; }
+        #article-cecap .seccion-10 { background-color: #4A6493; }
+        #article-cecap .seccion-10 .section-number, #article-cecap .seccion-10 .main-title, #article-cecap .seccion-10 .text-column { color: #F0EEE6; }
+        #article-cecap .seccion-11 { background-color: #262D1D; }
+        #article-cecap .seccion-11 .section-number, #article-cecap .seccion-11 .main-title, #article-cecap .seccion-11 .text-column { color: #E3EED0; }
+
+        /* CECAP bajaditas */
+        #article-cecap .bajadita-01 { background-color: #e7e3dd; }
+        #article-cecap .bajadita-01 .bajadita-text { color: #553196; }
+        #article-cecap .bajadita-01 .image-box { background-image: url('https://i.imgur.com/HM7Uobh.jpeg'); }
+        #article-cecap .bajadita-02 { background-color: #E3EED0; }
+        #article-cecap .bajadita-02 .bajadita-text { color: #262D1D; }
+        #article-cecap .bajadita-02 .image-box { background-image: url('https://i.imgur.com/YMJRGMM.jpeg'); }
+        #article-cecap .bajadita-03 { background-color: #E4DDF0; }
+        #article-cecap .bajadita-03 .bajadita-text { color: #42304A; }
+        #article-cecap .bajadita-03 .image-box { background-image: url('https://i.imgur.com/vTpHpAR.jpeg'); }
+        #article-cecap .bajadita-04 { background-color: #EAEAEA; }
+        #article-cecap .bajadita-04 .bajadita-text { color: #5C6B72; }
+        #article-cecap .bajadita-04 .image-box { background-image: url('https://i.imgur.com/GeIcvL0.jpeg'); }
+        #article-cecap .bajadita-05 { background-color: #FDFCF9; }
+        #article-cecap .bajadita-05 .bajadita-text { color: #2447B9; }
+        #article-cecap .bajadita-05 .image-box { background-image: url('https://i.imgur.com/7f3wLSz.jpeg'); }
+        #article-cecap .bajadita-06 { background-color: #DFDAC3; }
+        #article-cecap .bajadita-06 .bajadita-text { color: #11161C; }
+        #article-cecap .bajadita-06 .image-box { background-image: url('https://i.imgur.com/wl5gVVC.jpeg'); }
+        #article-cecap .bajadita-07 { background-color: #9AA0CF; }
+        #article-cecap .bajadita-07 .image-box { background-image: url('https://i.imgur.com/p0tia4s.jpeg'); }
+        #article-cecap .bajadita-08 { background-color: #E9FDC0; }
+        #article-cecap .bajadita-08 .image-box { background-image: url('https://i.imgur.com/SA2pt5K.jpeg'); }
+        #article-cecap .bajadita-09 { background-color: #9AA0CF; }
+        #article-cecap .bajadita-09 .bajadita-text { color: #221F20; }
+        #article-cecap .bajadita-09 .image-box { background-image: url('https://i.imgur.com/kohu5E9.jpeg'); }
+        #article-cecap .bajadita-10 { background-color: #F0EEE6; }
+        #article-cecap .bajadita-10 .image-box { background-image: url('https://i.imgur.com/Oc0TmPS.jpeg'); }
+        #article-cecap .bajadita-11 { background-color: #E3EED0; }
+        #article-cecap .bajadita-11 .bajadita-text { color: #262D1D; }
+
         /* ---- BAJADITAS ---- */
         section[class*="bajadita"] {
             min-height: 100vh;
@@ -596,7 +706,7 @@
             font-family: 'Sora', sans-serif;
         }
 
-        /* Colores de bajaditas */
+        /* Colores de bajaditas — MMEC */
         .bajadita-01 {
             background-color: #E4DDF0;
         }
@@ -704,6 +814,10 @@
         .bajadita-09 .image-box {
             background-image: url('https://i.imgur.com/UmHJrHl.jpeg');
         }
+
+        /* ---- MAP CONTAINER ---- */
+        .map-container { width: 100%; max-width: 1200px; height: 600px; border-radius: 4px; overflow: hidden; }
+        .map-container iframe { width: 100%; height: 100%; border: none; }
 
         /* ---- FOOTER ---- */
         .footer {
@@ -874,9 +988,11 @@
                 font-size: 12px;
                 padding: 6px 12px;
             }
+
+            .map-container { height: 400px; }
         }
 
-        /* --- iOS Safari fallback: JS adds .force-mobile when screen.width ≤ 480 but viewport lies --- */
+        /* --- iOS Safari fallback: JS adds .force-mobile when screen.width <= 480 but viewport lies --- */
         .force-mobile .header {
             padding: 12px 20px;
             max-height: 60px;
@@ -974,6 +1090,8 @@
             font-size: 12px;
             padding: 6px 12px;
         }
+
+        .force-mobile .map-container { height: 400px; }
     </style>
 </head>
 
@@ -998,8 +1116,8 @@
             </div>
             <div class="header-right">
                 <div class="header-title">VOCES QUE INSPIRAN</div>
-                <a href="cecap.html" class="header-button" data-page="cecap">CECAP</a>
-                <a href="index.html" class="header-button" data-page="index">MÁS MUJER EN CIENCIA</a>
+                <a href="#" class="header-button" data-article="cecap">CECAP</a>
+                <a href="#" class="header-button" data-article="mmec">MÁS MUJER EN CIENCIA</a>
                 <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú">
                     <span></span><span></span><span></span>
                 </button>
@@ -1018,10 +1136,13 @@
             </svg>
         </div>
         <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Cerrar menú">&#x2715;</button>
-        <a href="cecap.html" data-page="cecap">Cecap</a>
-        <a href="index.html" data-page="index">Más Mujer en Ciencia</a>
+        <a href="#" data-article="cecap">Cecap</a>
+        <a href="#" data-article="mmec">Más Mujer en Ciencia</a>
     </nav>
     <!-- NAV UNIFICADO — fin -->
+
+    <!-- ======================== MMEC ARTICLE ======================== -->
+    <div id="article-mmec" class="article active">
 
     <!-- HERO -->
     <section class="hero" id="sec-hero">
@@ -1410,6 +1531,306 @@
         </div>
     </section>
 
+    </div>
+    <!-- ======================== END MMEC ARTICLE ======================== -->
+
+    <!-- ======================== CECAP ARTICLE ======================== -->
+    <div id="article-cecap" class="article">
+
+    <!-- CECAP HERO -->
+    <section class="hero" id="cecap-hero">
+        <div class="hero-content">
+            <div class="hero-top">
+                <div class="hero-logo-item">
+                    <img src="https://i.imgur.com/nbpXPDE.png" alt="MEC">
+                </div>
+            </div>
+            <div class="hero-bottom">
+                <h1 class="hero-title">Los Cecap, un espacio para<br>volver a creer en las oportunidades</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP SECCIÓN 01 -->
+    <section class="seccion-01" id="cecap-01">
+        <div class="section-number"><h3>01</h3></div>
+        <div class="main-title"><h1>¿Qué son los Cecap<br>y en quiénes impactan?</h1></div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>Por las puertas de los Centros Educativos de Capacitación, Arte y Producción (Cecap) han ingresado miles de adolescentes uruguayos que, por distintos motivos, en algún momento no encontraron en la educación formal el espacio adecuado para ellos.</p>
+                <p>Jóvenes que estaban por fuera del sistema educativo, y muchas veces, fuera también del ecosistema laboral. La gran mayoría de esos jóvenes que entraron en los Cecap recuperaron la motivación para pensar un proyecto de vida, para aprender y para crecer.</p>
+            </div>
+            <div class="text-column">
+                <p>Los Cecap son una propuesta del Ministerio de Educación y Cultura nacida a comienzos de los 2000, con el objetivo de responder a algunas de las necesidades de los jóvenes entre 14 y 20 años que no han completado la Educación Media Básica y tampoco están trabajando.</p>
+                <p>No es una escuela, no es un liceo y no es un taller. Es, como dice Isabel Alende, coordinadora nacional del programa, "un lugar donde los gurises pueden ser".</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP BAJADITA 01 -->
+    <section class="bajadita-01" id="cecap-b01">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>La propuesta educativa combina talleres prácticos y artísticos, espacios de formación personal y social, recreación, deporte y orientación laboral.</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP SECCIÓN 02 -->
+    <section class="seccion-02" id="cecap-02">
+        <div class="section-number"><h3>02</h3></div>
+        <div class="main-title"><h1>Alcance y presencia<br>en todo el país</h1></div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>Con 22 centros en funcionamiento distribuidos en 16 departamentos de todo el país, los Cecap están dirigidos a jóvenes de entre 14 y 20 años que no están vinculados al sistema educativo formal ni al mundo del trabajo. Cada semestre, alrededor de unos 2.500 adolescentes forman parte del programa.</p>
+                <p>La propuesta educativa combina talleres prácticos y artísticos, espacios de formación personal y social, recreación, deporte y orientación laboral. Pero su diferencial tiene que ver con una impronta que apuesta al acompañamiento afectivo, a la presencia y al vínculo humano.</p>
+            </div>
+            <div class="text-column">
+                <p>Veinte centros cuentan, además, con convenios con UTU y Secundaria, lo que permite a los adolescentes volver a cursar simultáneamente, su educación media básica, de una forma diferente. "Algunos entran con sexto de escuela y, dos años después, salen con tercero de liceo aprobado."</p>
+                <p>"El foco está puesto en eso que los jóvenes traen y que pueden y quieren desarrollar", resume Stefanie, coordinadora del centro de Fray Bentos. "Se toma lo que ellos saben, lo que les interesa, sus posibilidades. Y desde ahí se construye."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP BAJADITA 02 -->
+    <section class="bajadita-02" id="cecap-b02">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>El foco está puesto en eso que los jóvenes traen y que pueden y quieren desarrollar</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP SECCIÓN 03 -->
+    <section class="seccion-03" id="cecap-03">
+        <div class="section-number"><h3>03</h3></div>
+        <div class="main-title"><h1>Un lugar donde prima<br>lo humano</h1></div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>La pedagogía de los Cecap no empieza en el aula. Empieza en la puerta. "Si vos venís a mi casa y yo te espero en la puerta, porque estoy esperando que vengas y quiero darte la bienvenida desde ese momento, eso cambia todo", dice Isabel Alende.</p>
+                <p>Esperar, recibir, preguntar, acompañar; Cecap funciona con el concepto de hospitalidad pedagógica. Se trata de un enfoque de enseñanza que prioriza la relación entre docentes y estudiantes, con base en el respeto, la acogida y la creación de un ambiente seguro para el aprendizaje.</p>
+            </div>
+            <div class="text-column">
+                <p>Por eso, en los Cecap, la joven o el joven que llega no es un número ni un caso más, es una persona con potencial, historia, deseos, dudas y miedos. "Si te llamás Juan pero querés que te diga Mariela, te digo Mariela. Porque tiene que ver con tu identidad, con tu historia y eso hay que respetarlo."</p>
+                <p>Cuando una joven o un joven llega a Cecap, se lo invita a participar de una entrevista en la que es recibido por un educador que lo escucha y le cuenta de qué se trata la experiencia. El estudiante firma un acuerdo pedagógico que acompaña todo su trayecto.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP BAJADITA 03 -->
+    <section class="bajadita-03" id="cecap-b03">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>Una escucha atenta o una palabra de aliento puede ser más transformadora que cualquier contenido</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP SECCIÓN 04 -->
+    <section class="seccion-04" id="cecap-04">
+        <div class="section-number"><h3>04</h3></div>
+        <div class="main-title"><h1>Confiar en<br>los jóvenes</h1></div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>Para muchas y muchos jóvenes, Cecap es un lugar donde alguien les pregunta qué quieren, qué les gusta, qué saben hacer. "Uno de los desafíos más importantes que tenemos es encontrar la motivación en estos jóvenes, teniendo en cuenta que muchas veces enfrentan obstáculos grandes", explica Juan Pablo Leguizamo, educador en el CECAP de Fray Bentos.</p>
+                <p>Ante esa realidad, Juan Pablo cree que lo más importante es tener empatía: "Esa es la forma de buscar la motivación de los gurises, basándonos siempre en sus fortalezas, que son muchas, y resaltando lo positivo en todo momento."</p>
+            </div>
+            <div class="text-column">
+                <p>"Muchas veces pasa que los gurises llegan diciendo que no saben hacer nada", cuenta Isabel Alende. "Pero después, cuando empezás a charlar con ellos, te dicen que cuidan a sus hermanos, que cocinan, que se encargan de sus abuelos y no podés creer."</p>
+                <p>"Hay un montón de trabajo no remunerado, sobre todo en las gurisas, que es invisibilizado. Y nosotros tratamos de resignificar eso, de hacerlo valer", dice Isabel.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP BAJADITA 04 -->
+    <section class="bajadita-04" id="cecap-b04">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>Cada joven tiene una familia detrás y lucha por algo que no es visible. Por eso, cuando se sienten acompañados, vuelven a florecer</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP SECCIÓN 05 -->
+    <section class="seccion-05" id="cecap-05">
+        <div class="section-number"><h3>05</h3></div>
+        <div class="main-title"><h1>Aprender haciendo,<br>otra forma posible</h1></div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>"Si yo te digo que hagas una división de dos cifras, capaz me decís que no te acordás cómo se hace", ejemplifica Isabel. "Pero si te digo que tenemos que cortar una tela entre tres personas, entonces empezamos a ver cómo hacerlo. Y ahí, aparece la división."</p>
+                <p>Aprender haciendo es la clave. "Nadie aprende lo que no desea. Y si no conocés, no podés desear. Por eso, el primer semestre en los Cecap es para mostrar a los jóvenes todas las actividades que tenemos. Para que puedan conocer y así elegir. Para que sientan que pueden."</p>
+            </div>
+            <div class="text-column">
+                <p>El arte ocupa un lugar central en esa construcción: música, teatro, plástica, danza. "Nos dimos cuenta de que muchos pueden decir un montón de cosas rapeando, que tal vez no pueden decir escribiendo. El arte permite expresar, mostrar, canalizar. Y ahí pasan cosas increíbles", cuenta la coordinadora nacional.</p>
+                <p>"Por eso, en Cecap, la enseñanza se basa en aquello que queremos lograr. A partir de ahí, vemos qué necesitamos aprender."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP BAJADITA 05 -->
+    <section class="bajadita-05" id="cecap-b05">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>Los Cecap representan una propuesta original y creativa de abordaje territorial</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP SECCIÓN 06 -->
+    <section class="seccion-06" id="cecap-06">
+        <div class="section-number"><h3>06</h3></div>
+        <div class="main-title"><h1>Una comunidad educativa<br>que abraza</h1></div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>El equipo de cada Cecap está compuesto por coordinadores, educadores referentes, talleristas y técnicos de distintas áreas. Ellos son quienes sostienen el día a día de cada centro, en cada rincón de nuestro país. Con escucha, compromiso y paciencia, construyen el presente y el futuro de los gurises que llegan buscando un nuevo camino.</p>
+            </div>
+            <div class="text-column">
+                <p>"Todos los que participan de los Cecap aportan contención, confianza, afecto. En los centros se construyen vínculos cercanos y respetuosos que permiten que los gurises se animen a aprender, a expresarse, a construir su camino", dice Stefanie.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP BAJADITA 06 -->
+    <section class="bajadita-06" id="cecap-b06">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>Un lugar donde cada joven pueda sentirse valorado, acompañado y motivado para construir su proyecto de vida</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP SECCIÓN 07 -->
+    <section class="seccion-07" id="cecap-07">
+        <div class="section-number"><h3>07</h3></div>
+        <div class="main-title"><h1>José: la voz<br>de un estudiante</h1></div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>José Suárez es estudiante del Cecap de Fray Bentos. Llegó por recomendación de Richard, el adscripto del liceo al que iba antes. Se acercó sin saber qué esperar, pero la bienvenida fue muy buena: "Me pareció un lugar muy lindo desde el principio y, desde las primeras semanas, trabajé con los talleristas y con mis compañeros."</p>
+                <p>Actualmente, José hace varios talleres, pero los que más disfruta son Gastronomía, Ensamble Musical, Espacio Grupal y Recreación y Deporte. "Tengo que agradecerles a todos porque desde el primer día me recibieron con los brazos abiertos y eso no tiene precio."</p>
+            </div>
+            <div class="text-column">
+                <p>"En los grupos siempre intentamos ser compañeros unos con otros y ser unidos. Eso es algo que no encontré en otros lugares y es algo a destacar", asegura José. En este tiempo, se hizo amigos que son "casi hermanos".</p>
+                <p>"El Cecap me cambió una banda", dice José. Antes, cuando iba a la UTU, muchas veces lo hacía sin ganas. Eso cambió cuando encontró su lugar: "Tengo proyectos a futuro. Quiero terminar el Cecap e irme a estudiar Electromecánica a Paysandú."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP BAJADITA 07 -->
+    <section class="bajadita-07" id="cecap-b07">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+        </div>
+    </section>
+
+    <!-- CECAP SECCIÓN 08 -->
+    <section class="seccion-08" id="cecap-08">
+        <div class="section-number"><h3>08</h3></div>
+        <div class="main-title"><h1>La educación como<br>un hecho reparador</h1></div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>"En Cecap aprendí que la educación va más allá de transmitir conocimientos. Lo más importante es generar vínculos porque es más fácil construir un acto educativo si hay un buen vínculo. Por eso, yo insisto en eso, en ser cercanos con los gurises", asegura Stefanie.</p>
+                <p>Para la coordinadora, lo más importante es confiar en los procesos. "Cada joven tiene una familia detrás y lucha por algo que no es visible. Por eso, cuando se sienten acompañados, vuelven a florecer."</p>
+            </div>
+            <div class="text-column">
+                <p>"Aprendo de los gurises todo el tiempo, de su creatividad, de su fuerza, de su resiliencia. Estar en Cecap me reafirma cada día que la educación puede ser un acto profundamente humano, reparador y esperanzador."</p>
+                <p>"Me gustaría que la sociedad conociera qué hace este programa, porque es una oportunidad para gurises que, por distintos motivos, tuvieron que dejar los estudios", dice Stefanie. "Eso es mucho y deja mucho."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP BAJADITA 08 -->
+    <section class="bajadita-08" id="cecap-b08">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+        </div>
+    </section>
+
+    <!-- CECAP SECCIÓN 09 -->
+    <section class="seccion-09" id="cecap-09">
+        <div class="section-number"><h3>09</h3></div>
+        <div class="main-title"><h1>Los desafíos,<br>una invitación a seguir</h1></div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>Los retos están presentes todos los días y no son menores. "A veces nos invade otro modelo. Algunos gurises llegan armados porque es la única forma que encuentran para volver a sus casas. Nosotros tratamos de construir otra lógica, pero tenemos que entender la dualidad de los dos mundos que viven", reconoce Isabel.</p>
+                <p>A pesar de los retos y las dificultades, el horizonte está en la mente. "El programa creció mucho, pero puede seguir creciendo", agrega Isabel.</p>
+            </div>
+            <div class="text-column">
+                <p>"El desafío que tenemos para los próximos años es acompañar a esos gurises que quedan en la puerta del bachillerato, después de su experiencia en Cecap", dice Isabel.</p>
+                <p>Stefanie también tiene expectativas: "Me imagino un Cecap con mejor infraestructura, con más comodidades, con más proyectos comunitarios. Un lugar donde cada joven pueda sentirse valorado, acompañado y motivado para construir su proyecto de vida."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP BAJADITA 09 -->
+    <section class="bajadita-09" id="cecap-b09">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+            <div class="bajadita-text">
+                <h3>Isabel Alende</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP SECCIÓN 10 -->
+    <section class="seccion-10" id="cecap-10">
+        <div class="section-number"><h3>10</h3></div>
+        <div class="main-title"><h1>Una apuesta educativa<br>que abraza</h1></div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>En una sociedad que muchas veces expulsa o segrega a jóvenes, los Cecap van contracorriente: reciben, abrazan, sostienen. Allí donde otros ven fracaso o desinterés, CECAP ve potencial, deseo, posibilidad. Y por eso, cada vínculo importa. Cada encuentro se valora. Cada historia es única y necesaria.</p>
+                <p>"No da lo mismo que vengas o que no vengas", repiten en todos los centros. Porque detrás de cada joven hay una realidad y camino recorrido. Hay, a veces, una historia que tal vez no fue escuchada en otro lado. En Cecap, cada gurí es alguien. Y eso, para muchos, cambia todo.</p>
+            </div>
+            <div class="text-column">
+                <p>"Una escucha atenta o una palabra de aliento puede ser más transformadora que cualquier contenido", dice Stefanie. Y esa frase resume el corazón del programa: poner a los jóvenes en el centro, no como destinatarios de una oferta, sino como protagonistas de sus propios caminos.</p>
+                <p>Cecap no es solo un centro. Es una oportunidad real. Es un espacio donde volver a creer en uno mismo, en los demás y en el futuro. Porque todos tienen algo para dar y porque educación puede ser un acto profundamente humano, reparador y esperanzador.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP BAJADITA 10 -->
+    <section class="bajadita-10" id="cecap-b10">
+        <div class="bajadita-container">
+            <div class="image-box"></div>
+        </div>
+    </section>
+
+    <!-- CECAP SECCIÓN 11 -->
+    <section class="seccion-11" id="cecap-11">
+        <div class="section-number"><h3>11</h3></div>
+        <div class="main-title"><h1>El lugar de los Cecap<br>para la política educativa</h1></div>
+        <div class="content-wrapper">
+            <div class="text-column">
+                <p>Los Cecap constituyen una forma de abordar la vinculación de los jóvenes a la educación a través del trabajo, el arte y otras propuestas, en contextos vulnerables, con un enfoque de cercanía muy valioso. Esto permite que los equipos alcancen a un gran número de jóvenes y familias.</p>
+                <p>La propuesta tiene un enorme potencial para llevar a cabo una estrategia de alcance nacional a través del Ministerio de Educación y Cultura, que proporciona recursos humanos, propuestas pedagógicas y materiales, interactuando con el aporte de actores locales, especialmente intendencias.</p>
+            </div>
+            <div class="text-column">
+                <p>Los Cecap representan una propuesta original y creativa de abordaje territorial, con una cercanía educativa que les permite integrarse activamente a sus comunidades y sostener, en el tiempo, oportunidades concretas para acceder a una educación de mayor calidad.</p>
+                <p>Gabriel Quirici<br>Director Nacional de Educación</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CECAP BAJADITA 11 — Mapa -->
+    <section class="bajadita-11" id="cecap-b11">
+        <div class="bajadita-container">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/d/embed?mid=1rbBszoVojyN2A4KV1gcJD-ynLAEapes&ehbc=2E312F" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="bajadita-text">
+                <h3>Conocé la ubicación de la red nacional de centros Cecap</h3>
+            </div>
+        </div>
+    </section>
+
+    </div>
+    <!-- ======================== END CECAP ARTICLE ======================== -->
+
     <!-- FOOTER -->
     <footer class="footer" id="sec-footer">
         <div class="footer-content">
@@ -1426,7 +1847,7 @@
                         <div class="footer-section-title">MÁS INFO</div>
                         <a href="https://www.gub.uy/ministerio-educacion-cultura" target="_blank"
                             class="footer-link">Portal MEC</a>
-                        <a href="cecap.html" class="footer-link">Leer artículo CECAP</a>
+                        <a href="#" id="footer-cross-link" class="footer-link">Leer artículo: Cecap</a>
                     </div>
                 </div>
             </div>
@@ -1444,8 +1865,8 @@
     <script>
         const header = document.querySelector('.header');
 
-        // Mapa: clase de sección → clase del header
-        const sectionHeaderMap = [
+        // MMEC section -> header class map
+        const mmecMap = [
             { id: 'sec-hero', cls: 'header-hero' },
             { id: 'sec-01', cls: 'header-s01' },
             { id: 'sec-b01', cls: 'header-b01' },
@@ -1469,25 +1890,54 @@
             { id: 'sec-footer', cls: 'header-footer' },
         ];
 
-        const allHeaderClasses = sectionHeaderMap.map(s => s.cls);
+        // CECAP section -> header class map
+        const cecapMap = [
+            { id: 'cecap-hero', cls: 'header-cecap-hero' },
+            { id: 'cecap-01', cls: 'header-cecap-s01' },
+            { id: 'cecap-b01', cls: 'header-cecap-b01' },
+            { id: 'cecap-02', cls: 'header-cecap-s02' },
+            { id: 'cecap-b02', cls: 'header-cecap-b02' },
+            { id: 'cecap-03', cls: 'header-cecap-s03' },
+            { id: 'cecap-b03', cls: 'header-cecap-b03' },
+            { id: 'cecap-04', cls: 'header-cecap-s04' },
+            { id: 'cecap-b04', cls: 'header-cecap-b04' },
+            { id: 'cecap-05', cls: 'header-cecap-s05' },
+            { id: 'cecap-b05', cls: 'header-cecap-b05' },
+            { id: 'cecap-06', cls: 'header-cecap-s06' },
+            { id: 'cecap-b06', cls: 'header-cecap-b06' },
+            { id: 'cecap-07', cls: 'header-cecap-s07' },
+            { id: 'cecap-b07', cls: 'header-cecap-b07' },
+            { id: 'cecap-08', cls: 'header-cecap-s08' },
+            { id: 'cecap-b08', cls: 'header-cecap-b08' },
+            { id: 'cecap-09', cls: 'header-cecap-s09' },
+            { id: 'cecap-b09', cls: 'header-cecap-b09' },
+            { id: 'cecap-10', cls: 'header-cecap-s10' },
+            { id: 'cecap-b10', cls: 'header-cecap-b10' },
+            { id: 'cecap-11', cls: 'header-cecap-s11' },
+            { id: 'cecap-b11', cls: 'header-cecap-b11' },
+            { id: 'sec-footer', cls: 'header-footer' },
+        ];
+
+        let activeArticle = 'mmec';
+        let activeSectionMap = mmecMap;
+        const allHeaderClasses = [...mmecMap, ...cecapMap].map(s => s.cls);
 
         function updateHeader() {
-            const hero = document.getElementById('sec-hero');
+            const heroId = activeArticle === 'mmec' ? 'sec-hero' : 'cecap-hero';
+            const hero = document.getElementById(heroId);
             const footer = document.getElementById('sec-footer');
             const scrollY = window.scrollY;
             const heroBottom = hero.offsetTop + hero.offsetHeight;
             const footerTop = footer.offsetTop;
 
-            // Mostrar/ocultar header
             if (scrollY > heroBottom - 100 && scrollY < footerTop - 100) {
                 header.classList.add('visible');
             } else {
                 header.classList.remove('visible');
             }
 
-            // Actualizar color según sección actual
             const scrollCenter = scrollY + 100;
-            for (const { id, cls } of sectionHeaderMap) {
+            for (const { id, cls } of activeSectionMap) {
                 const el = document.getElementById(id);
                 if (!el) continue;
                 const top = el.offsetTop;
@@ -1500,17 +1950,52 @@
             }
         }
 
+        function switchArticle(article) {
+            if (article === activeArticle) return;
+            activeArticle = article;
+            activeSectionMap = (article === 'cecap') ? cecapMap : mmecMap;
+
+            document.querySelectorAll('.article').forEach(el => el.classList.remove('active'));
+            document.getElementById('article-' + article).classList.add('active');
+
+            // Update active state on nav links
+            document.querySelectorAll('[data-article]').forEach(el => {
+                el.classList.toggle('active', el.dataset.article === article);
+            });
+
+            // Update footer cross-link
+            const crossLink = document.getElementById('footer-cross-link');
+            if (crossLink) {
+                if (article === 'cecap') {
+                    crossLink.textContent = 'Leer artículo: Más Mujer en Ciencia';
+                    crossLink.onclick = function(e) { e.preventDefault(); switchArticle('mmec'); };
+                } else {
+                    crossLink.textContent = 'Leer artículo: Cecap';
+                    crossLink.onclick = function(e) { e.preventDefault(); switchArticle('cecap'); };
+                }
+            }
+
+            window.scrollTo(0, 0);
+            header.classList.remove('visible');
+            updateHeader();
+            closeMenu();
+        }
+
         window.addEventListener('scroll', updateHeader);
         updateHeader();
 
-        // --- NAV UNIFICADO JS — inicio ---
-        // 1. Detección de página activa por URL
-        const currentPage = location.pathname.includes('cecap') ? 'cecap' : 'index';
-        document.querySelectorAll('[data-page]').forEach(el => {
-            if (el.dataset.page === currentPage) el.classList.add('active');
+        // Set initial active state
+        document.querySelectorAll('[data-article="mmec"]').forEach(el => el.classList.add('active'));
+
+        // Article switch click handlers
+        document.querySelectorAll('[data-article]').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                switchArticle(this.dataset.article);
+            });
         });
 
-        // 2. Hamburger open/close
+        // Hamburger open/close
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileOverlay = document.getElementById('mobile-overlay');
@@ -1523,11 +2008,10 @@
         mobileClose.addEventListener('click', closeMenu);
         mobileOverlay.addEventListener('click', closeMenu);
 
-        // 3. iOS Safari force-mobile detection
+        // iOS Safari force-mobile
         if (screen.width <= 480 && window.innerWidth > 480) {
             document.documentElement.classList.add('force-mobile');
         }
-        // --- NAV UNIFICADO JS — fin ---
     </script>
 
 </body>
