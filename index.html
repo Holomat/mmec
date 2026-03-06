@@ -118,9 +118,7 @@
             right: 0;
             width: 100%;
             height: 100vh;
-            background-color: rgba(15, 23, 30, 0.6);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
+            background-color: #42304A;
             z-index: 2000;
             flex-direction: column;
             justify-content: center;
@@ -142,26 +140,34 @@
             right: 28px;
             background: none;
             border: none;
-            color: #CDF6FF;
+            color: #E4DDF0;
             font-size: 32px;
             font-weight: 300;
             cursor: pointer;
             line-height: 1;
         }
 
+        .mobile-menu-logo {
+            position: absolute;
+            top: 24px;
+            left: 20px;
+        }
+
         .mobile-menu a {
             font-family: 'Sora', sans-serif;
-            font-weight: 600;
-            font-size: 32px;
+            font-weight: 400;
+            font-size: 28px;
+            line-height: 1.1;
+            letter-spacing: -1px;
             text-align: right;
-            color: rgba(205, 246, 255, 0.6);
+            color: rgba(228, 221, 240, 0.5);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .mobile-menu a.active {
-            color: #ffffff;
-            font-weight: 800;
+            color: #E4DDF0;
+            font-weight: 400;
         }
 
         .mobile-menu a:hover {
@@ -1003,9 +1009,17 @@
 
     <div class="mobile-overlay" id="mobile-overlay"></div>
     <nav class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-logo">
+            <svg width="24" height="24" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40.3069 7.91402V3H25.5679H20.6681V7.91402V12.8527V17.7618V22.7005V27.6145H25.5679H40.3069V22.7005H25.5679V17.7618H40.3069V12.8527H25.5679V7.91402H40.3069Z" fill="#E4DDF0" />
+                <path d="M8.39655 3C4.31417 3 1 6.31881 1 10.4179C1 14.5171 4.30924 17.8359 8.39655 17.8359C12.4839 17.8359 15.7931 14.5171 15.7931 10.4179C15.7931 6.31881 12.4839 3 8.39655 3ZM8.39655 12.8972C7.03248 12.8972 5.92447 11.786 5.92447 10.4179C5.92447 9.04992 7.03248 7.93871 8.39655 7.93871C9.76063 7.93871 10.8686 9.04992 10.8686 10.4179C10.8686 11.786 9.76063 12.8972 8.39655 12.8972Z" fill="#E4DDF0" />
+                <path d="M15.7931 22.7054H1V27.6491H15.7931V22.7054Z" fill="#E4DDF0" />
+                <path d="M40.3022 32.5829H1V37.5265H40.3022V32.5829Z" fill="#E4DDF0" />
+            </svg>
+        </div>
         <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Cerrar menú">&#x2715;</button>
-        <a href="cecap.html" data-page="cecap">CECAP</a>
-        <a href="index.html" data-page="index">MÁS MUJER EN CIENCIA</a>
+        <a href="cecap.html" data-page="cecap">Cecap</a>
+        <a href="index.html" data-page="index">Más Mujer en Ciencia</a>
     </nav>
     <!-- NAV UNIFICADO — fin -->
 
